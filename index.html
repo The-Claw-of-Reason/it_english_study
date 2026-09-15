@@ -1550,7 +1550,7 @@ function renderCards(cat, q = "") {
   }
   grid.innerHTML = items.map(it => `
     <div class="card">
-      <div class="front">${it.term}<small>Нажмите, чтобы увидеть перевод</small></div>
+      <div class="front">${it.term}<small>Click to see the translation.</small></div>
       <div class="back">
         <div class="ru">${it.ru}</div>
         <div class="ex">${it.ex}</div>

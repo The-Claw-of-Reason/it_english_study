@@ -245,20 +245,25 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
   gap: 12px;
 }
 .brand {
-  display: flex; align-items: center; gap: 9px;
-  font-weight: 700; font-size: 16px;
-  letter-spacing: -.01em;
+  display: flex; align-items: center; gap: 11px;
+  font-weight: 800;              /* было 700 — жирнее */
+  font-size: 22px;               /* было 16px — крупнее */
+  letter-spacing: -.02em;
   color: var(--text);
 }
-.brand-icon { color: var(--accent); }
+.brand-icon {
+  color: var(--accent);
+  width: 26px; height: 26px;     /* иконка-звёздочка тоже крупнее */
+}
 .brand-text {
   background: var(--accent-grad);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--accent);
+  /* опционально: мягкое свечение вокруг надписи */
+  filter: drop-shadow(0 0 10px var(--accent-glow));
 }
-
 /* Кнопка темы — картинка с котиками, без инверсии */
 .theme-toggle {
   width: 54px;
@@ -1048,14 +1053,14 @@ body.light .paw-mark { opacity: .04; }
     <section class="view" id="view-abbr">
       <h2 class="view-title">Abbreviations</h2>
       <p class="view-sub">CVE, SOC, SIEM — расшифровка</p>
-      <input type="text" class="search" data-search="abbr" placeholder="Поиск" />
+      <input type="text" class="search" data-search="abbr" placeholder="Search" />
       <div class="cards" id="cards-abbr"></div>
     </section>
 
     <section class="view" id="view-slang">
       <h2 class="view-title">Slang</h2>
       <p class="view-sub">Как говорят в чатах и на митапах</p>
-      <input type="text" class="search" data-search="slang" placeholder="Поиск" />
+      <input type="text" class="search" data-search="slang" placeholder="Search" />
       <div class="cards" id="cards-slang"></div>
     </section>
 

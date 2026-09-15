@@ -286,13 +286,13 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
   border-radius: 50%;
   display: block;
   transition: transform .7s cubic-bezier(.2,.8,.3,1);
-  /* никакой инверсии — картинка всегда как есть */
+  transform: rotate(0deg);
 }
-.theme-toggle.spin img {
-  transform: rotate(360deg) scale(1.04);
+/* переворот на 180° при каждом клике */
+.theme-toggle.flip img {
+  transform: rotate(180deg);
 }
 body.light .theme-toggle img {
-  /* оставляем без filter: invert, чтобы котики оставались собой */
   filter: none;
 }
 
@@ -1510,12 +1510,16 @@ if (localStorage.getItem("theme") === "light") {
   document.body.classList.remove("dark");
 }
 
+let flipped = false;
+
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("light");
   document.body.classList.toggle("dark");
   localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-  themeToggle.classList.add("spin");
-  setTimeout(() => themeToggle.classList.remove("spin"), 700);
+
+  // каждый клик переворачивает картинку на 180° (туда-обратно)
+  flipped = !flipped;
+  themeToggle.classList.toggle("flip", flipped);
 });
 
 /* ==================== КОТ ГОВОРИТ ==================== */

@@ -17,7 +17,7 @@
   --accent: #b06cff;
   --accent-2: #6ce0ff;
   --accent-3: #ff6cd4;
-  --accent-grad: linear-gradient(135deg, #b06cff 0%, #6ce0ff 50%, #ff6cd4 100%);
+  --accent-grad: linear-gradient(135deg, #b06cff, #6ce0ff);
   --accent-soft: rgba(176, 108, 255, .10);
   --accent-glow: rgba(176, 108, 255, .35);
   --on-accent: #07060c;
@@ -42,7 +42,7 @@ body.light {
   --accent: #7c3aed;
   --accent-2: #0ea5e9;
   --accent-3: #db2777;
-  --accent-grad: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 50%, #db2777 100%);
+  --accent-grad: linear-gradient(135deg, #7c3aed, #0ea5e9);
   --accent-soft: rgba(124, 58, 237, .08);
   --accent-glow: rgba(124, 58, 237, .18);
   --on-accent: #ffffff;
@@ -101,7 +101,7 @@ body.light { color-scheme: light; }
   overflow: hidden;
 }
 
-/* ============ МАГИЧЕСКИЙ ФОН ============ */
+/* ============ СПОКОЙНЫЙ ФОН ============ */
 .magic-bg {
   position: absolute;
   inset: 0;
@@ -110,24 +110,21 @@ body.light { color-scheme: light; }
   z-index: 0;
 }
 
-/* Неоновые пятна */
 .magic-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 15% 15%, rgba(176, 108, 255, .12), transparent 50%),
-    radial-gradient(ellipse at 85% 75%, rgba(108, 224, 255, .08), transparent 45%),
-    radial-gradient(ellipse at 50% 100%, rgba(255, 108, 212, .06), transparent 40%);
+    radial-gradient(ellipse at 20% 0%, rgba(176, 108, 255, .07), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(108, 224, 255, .05), transparent 50%);
 }
 body.light .magic-bg::before {
   background:
-    radial-gradient(ellipse at 15% 15%, rgba(124, 58, 237, .06), transparent 50%),
-    radial-gradient(ellipse at 85% 75%, rgba(14, 165, 233, .05), transparent 45%),
-    radial-gradient(ellipse at 50% 100%, rgba(219, 39, 119, .04), transparent 40%);
+    radial-gradient(ellipse at 20% 0%, rgba(124, 58, 237, .05), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(14, 165, 233, .04), transparent 50%);
 }
 
-/* Сетка хакера */
+/* Сетка */
 .cyber-grid {
   position: absolute;
   inset: 0;
@@ -139,6 +136,7 @@ body.light .magic-bg::before {
   -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 75%);
   pointer-events: none;
   z-index: 0;
+  opacity: .4;
 }
 body.light .cyber-grid {
   background-image:
@@ -155,23 +153,23 @@ body.light .cyber-grid {
   height: 220px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%,
-    rgba(176, 108, 255, .20),
-    rgba(108, 224, 255, .06) 45%,
+    rgba(176, 108, 255, .16),
+    rgba(108, 224, 255, .05) 45%,
     transparent 72%);
   filter: blur(6px);
-  opacity: .6;
+  opacity: .45;
   pointer-events: none;
   z-index: 0;
 }
 body.light .magic-moon {
-  opacity: .3;
+  opacity: .22;
   background: radial-gradient(circle at 35% 35%,
-    rgba(124, 58, 237, .15),
-    rgba(14, 165, 233, .05) 45%,
+    rgba(124, 58, 237, .12),
+    rgba(14, 165, 233, .04) 45%,
     transparent 72%);
 }
 
-/* Коты-силуэты */
+/* Коты и лапки */
 .magic-cats {
   position: absolute;
   inset: 0;
@@ -179,15 +177,12 @@ body.light .magic-moon {
   overflow: hidden;
   z-index: 0;
 }
-
 .magic-cat-item {
   position: absolute;
   color: var(--accent);
-  opacity: .06;
-  animation: floatCat 12s ease-in-out infinite;
+  opacity: .055;
 }
-body.light .magic-cat-item { opacity: .05; }
-
+body.light .magic-cat-item { opacity: .06; }
 .magic-cat-item svg {
   width: 100%;
   height: 100%;
@@ -196,38 +191,25 @@ body.light .magic-cat-item { opacity: .05; }
   display: block;
 }
 
-@keyframes floatCat {
-  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
-}
-
-/* Матричный дождь */
-.matrix-rain {
+/* Нолики и единички */
+.binary-field {
   position: absolute;
   inset: 0;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
   z-index: 0;
-  opacity: .35;
   font-family: monospace;
-  font-size: 11px;
-  line-height: 1;
-  color: var(--accent-2);
+  font-weight: 700;
+  color: var(--accent);
+  user-select: none;
 }
-.matrix-col {
+.binary-item {
   position: absolute;
-  top: -100%;
-  white-space: nowrap;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  animation: matrixFall linear infinite;
-  text-shadow: 0 0 6px currentColor;
+  opacity: .10;
+  line-height: 1;
+  letter-spacing: .05em;
 }
-@keyframes matrixFall {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(200%); }
-}
-body.light .matrix-rain { opacity: .15; }
+body.light .binary-item { opacity: .14; }
 
 /* Звёзды */
 .starfield {
@@ -236,36 +218,16 @@ body.light .matrix-rain { opacity: .15; }
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  opacity: .6;
+  opacity: .5;
 }
-
 .star {
   position: absolute;
   border-radius: 50%;
   background: var(--accent);
-  opacity: .2;
-}
-body.dark .star {
-  box-shadow: 0 0 6px rgba(176, 108, 255, .4);
-}
-body.light .star {
-  box-shadow: none;
+  opacity: .18;
 }
 
-/* Руны */
-.rune {
-  position: absolute;
-  color: var(--accent);
-  opacity: .07;
-  pointer-events: none;
-  user-select: none;
-  animation: runePulse 4s ease-in-out infinite;
-}
-body.light .rune { opacity: .05; }
-@keyframes runePulse {
-  0%, 100% { opacity: .05; transform: scale(1) rotate(var(--rot, 0deg)); }
-  50% { opacity: .12; transform: scale(1.1) rotate(var(--rot, 0deg)); }
-}
+.rune, .magic-cat-item, .star, .binary-item { animation: none !important; }
 
 /* ============ ШАПКА ============ */
 .topbar {
@@ -288,10 +250,7 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
   letter-spacing: -.01em;
   color: var(--text);
 }
-.brand-icon {
-  color: var(--accent);
-  filter: drop-shadow(0 0 8px var(--accent-glow));
-}
+.brand-icon { color: var(--accent); }
 .brand-text {
   background: var(--accent-grad);
   -webkit-background-clip: text;
@@ -300,12 +259,13 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
   color: var(--accent);
 }
 
-/* Переключатель темы */
+/* Кнопка темы — картинка с котиками, без инверсии */
 .theme-toggle {
-  width: 44px; height: 44px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: transparent;
+  background: var(--surface);
   padding: 0;
   cursor: pointer;
   display: grid;
@@ -317,21 +277,23 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
 }
 .theme-toggle:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 16px var(--accent-glow);
-  background: var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 8px 22px var(--accent-glow);
 }
 .theme-toggle img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   display: block;
-  transition: transform .7s cubic-bezier(.2,.8,.3,1), filter .5s;
+  transition: transform .7s cubic-bezier(.2,.8,.3,1);
+  /* никакой инверсии — картинка всегда как есть */
 }
 .theme-toggle.spin img {
-  transform: rotate(360deg) scale(1.05);
+  transform: rotate(360deg) scale(1.04);
 }
 body.light .theme-toggle img {
-  filter: invert(1) hue-rotate(180deg);
+  /* оставляем без filter: invert, чтобы котики оставались собой */
+  filter: none;
 }
 
 /* Речь кота */
@@ -347,13 +309,10 @@ body.light .theme-toggle img {
 .cat-speech .icon {
   color: var(--border-strong);
   flex-shrink: 0;
-  transition: color .25s, filter .25s;
+  transition: color .25s;
 }
 .cat-speech.happy { color: var(--accent); }
-.cat-speech.happy .icon {
-  color: var(--accent);
-  filter: drop-shadow(0 0 6px var(--accent-glow));
-}
+.cat-speech.happy .icon { color: var(--accent); }
 
 /* ============ ОСНОВНОЕ ============ */
 main {
@@ -379,16 +338,7 @@ main {
   position: relative;
   display: inline-block;
 }
-.view-title::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -3px;
-  width: 100%; height: 2px;
-  background: var(--accent-grad);
-  border-radius: 2px;
-  opacity: .5;
-  box-shadow: 0 0 12px var(--accent-glow);
-}
+
 .view-sub {
   color: var(--text-dim); font-size: 13px;
   margin-bottom: 16px;
@@ -406,13 +356,9 @@ main {
   font-size: 14px;
   font-family: monospace;
   margin-bottom: 14px;
-  transition: border-color .2s, box-shadow .3s, background .3s;
+  transition: border-color .2s, background .3s;
 }
-.search:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 18px var(--accent-glow);
-}
+.search:focus { outline: none; border-color: var(--accent); }
 .search::placeholder { color: var(--text-dim); }
 
 /* Карточки терминов */
@@ -429,38 +375,9 @@ main {
   position: relative;
   overflow: hidden;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--accent-grad);
-  opacity: 0;
-  transition: opacity .3s;
-}
-.card::after {
-  content: '';
-  position: absolute;
-  top: 8px; right: 10px;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 8px var(--accent-2);
-  opacity: 0;
-  transition: opacity .3s;
-}
-.card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-glow);
-}
-.card:hover::before { opacity: .7; }
-.card:hover::after { opacity: .8; }
+.card:hover { border-color: var(--border-strong); }
 .card:active { transform: scale(.995); }
-.card.flipped {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent-soft), 0 0 28px var(--accent-glow), var(--shadow);
-}
-.card.flipped::before { opacity: 1; }
+.card.flipped { border-color: var(--accent); }
 
 .card .front { font-weight: 600; font-size: 15px; color: var(--text); }
 .card .front small {
@@ -474,60 +391,95 @@ main {
   color: var(--text-dim);
   padding-left: 11px;
   border-left: 2px solid var(--accent);
-  border-image: var(--accent-grad) 1;
   font-family: monospace;
 }
 .card.flipped .front { display: none; }
 .card.flipped .back { display: block; }
 
-/* Режимы */
+/* ============ ПРАКТИКА — обновлённый дизайн ============ */
+#studyHub { position: relative; }
+
+.practice-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 6px;
+}
+
 .modes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
 }
+
 .mode-btn {
-  background: var(--surface);
+  position: relative;
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 12px;
+  border-radius: 20px;
+  padding: 22px 14px 18px;
   cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
   font-family: inherit;
   color: var(--text);
   box-shadow: var(--shadow);
-  transition: border-color .25s, transform .15s, box-shadow .35s, background .3s;
+  transition: border-color .3s, transform .18s, box-shadow .3s, background .3s;
   text-align: center;
-  position: relative;
   overflow: hidden;
 }
-.mode-btn::after {
+.mode-btn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--accent-grad);
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(176,108,255,.35), rgba(108,224,255,.10) 45%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
   opacity: 0;
   transition: opacity .3s;
-  z-index: 0;
+  pointer-events: none;
 }
-.mode-btn > * { position: relative; z-index: 1; }
 .mode-btn:hover {
   border-color: var(--accent);
-  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow), 0 12px 30px var(--accent-glow);
 }
-.mode-btn:hover::after { opacity: .06; }
-.mode-btn:active { transform: scale(.985); }
+.mode-btn:hover::before { opacity: 1; }
+.mode-btn:active { transform: translateY(0) scale(.99); }
+
 .mode-btn .mode-icon {
+  width: 28px; height: 28px;
   color: var(--accent);
-  width: 26px; height: 26px;
-  filter: drop-shadow(0 0 6px var(--accent-glow));
+  padding: 12px;
+  box-sizing: content-box;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform .3s, background .3s, color .3s;
 }
-.mode-btn .mode-name { font-weight: 600; font-size: 13.5px; }
-.mode-btn .mode-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.35; }
-.mode-btn.wide { grid-column: span 2; flex-direction: row; justify-content: center; gap: 12px; padding: 16px; }
-.mode-btn.wide .mode-text { display: flex; flex-direction: column; align-items: flex-start; }
-.mode-btn.wide .mode-name { font-size: 14px; }
+.mode-btn:hover .mode-icon {
+  transform: scale(1.06);
+  background: var(--accent-grad);
+  color: var(--on-accent);
+  border-color: transparent;
+}
+.mode-btn .mode-name { font-weight: 700; font-size: 14px; letter-spacing: -.01em; }
+.mode-btn .mode-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.4; }
+
+.mode-btn.wide {
+  grid-column: span 2;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 18px;
+  text-align: left;
+}
+.mode-btn.wide .mode-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.mode-btn.wide .mode-name { font-size: 15px; }
 .mode-btn.wide .mode-desc { text-align: left; }
 
 /* Экраны режимов */
@@ -546,13 +498,12 @@ main {
   cursor: pointer;
   margin-bottom: 14px;
   display: inline-flex; align-items: center; gap: 6px;
-  transition: color .2s, border-color .2s, box-shadow .3s, background .2s;
+  transition: color .2s, border-color .2s, background .2s;
 }
 .back-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-soft);
-  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .panel {
@@ -581,16 +532,11 @@ main {
   transition: all .2s;
   font-family: monospace;
 }
-.chip:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 14px var(--accent-glow);
-}
+.chip:hover { color: var(--accent); border-color: var(--accent); }
 .chip.active {
   background: var(--accent-grad);
   color: var(--on-accent);
   border-color: transparent;
-  box-shadow: 0 4px 20px var(--accent-glow);
 }
 
 .btn {
@@ -602,41 +548,20 @@ main {
   color: var(--on-accent);
   font-weight: 600; font-size: 14px;
   cursor: pointer; font-family: inherit;
-  transition: opacity .18s, border-color .18s, color .18s, box-shadow .3s, transform .15s;
-  box-shadow: 0 4px 20px var(--accent-glow);
-  position: relative;
-  overflow: hidden;
+  transition: opacity .18s, border-color .18s, color .18s;
 }
-.btn::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -60%;
-  width: 40%; height: 200%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,.3), transparent);
-  transform: skewX(-20deg);
-  transition: left .5s;
-}
-.btn:hover::after { left: 120%; }
-.btn:hover {
-  opacity: .95;
-  box-shadow: 0 6px 28px var(--accent-glow);
-  transform: translateY(-1px);
-}
-.btn:active { opacity: .8; transform: translateY(0); }
+.btn:hover { opacity: .95; }
+.btn:active { opacity: .8; }
 .btn-full { width: 100%; }
 .btn-ghost {
   background: transparent;
   border-color: var(--border);
   color: var(--text);
-  box-shadow: none;
 }
-.btn-ghost::after { display: none; }
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
-  box-shadow: 0 0 18px var(--accent-glow);
-  transform: translateY(-1px);
 }
 
 .progress {
@@ -656,7 +581,6 @@ main {
   background: var(--accent-grad);
   transition: width .35s;
   border-radius: 4px;
-  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .q-text {
@@ -676,24 +600,11 @@ main {
   font-size: 14px; font-family: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color .2s, background .2s, color .2s, box-shadow .3s, transform .15s;
+  transition: border-color .2s, background .2s, color .2s;
 }
-.opt:hover:not(.disabled) {
-  border-color: var(--accent);
-  box-shadow: 0 0 18px var(--accent-glow);
-  transform: translateX(2px);
-}
-.opt.correct {
-  background: var(--ok-soft);
-  border-color: var(--ok);
-  color: var(--ok);
-  box-shadow: 0 0 20px rgba(108, 255, 176, .2);
-}
-.opt.wrong {
-  background: var(--err-soft);
-  border-color: var(--err);
-  color: var(--err);
-}
+.opt:hover:not(.disabled) { border-color: var(--accent); }
+.opt.correct { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.opt.wrong { background: var(--err-soft); border-color: var(--err); color: var(--err); }
 .opt.disabled { cursor: default; }
 
 .fb {
@@ -725,7 +636,7 @@ main {
   padding: 36px 24px;
   cursor: pointer;
   box-shadow: var(--shadow);
-  transition: border-color .3s, box-shadow .35s, transform .2s;
+  transition: border-color .3s;
   position: relative;
 }
 .flash-card::before {
@@ -734,14 +645,9 @@ main {
   top: 12px; right: 16px;
   font-size: 14px;
   color: var(--accent);
-  opacity: .4;
-  text-shadow: 0 0 10px var(--accent-glow);
+  opacity: .3;
 }
-.flash-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-2px);
-}
+.flash-card:hover { border-color: var(--accent); }
 .flash-term {
   font-size: 24px; font-weight: 700;
   letter-spacing: -.02em;
@@ -790,21 +696,13 @@ main {
   font-family: inherit;
   line-height: 1.35;
 }
-.match-item:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 16px var(--accent-glow);
-}
-.match-item.selected {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 20px var(--accent-glow);
-}
+.match-item:hover { border-color: var(--accent); }
+.match-item.selected { border-color: var(--accent); background: var(--accent-soft); }
 .match-item.matched {
   border-color: var(--ok);
   background: var(--ok-soft);
   color: var(--ok);
   cursor: default;
-  box-shadow: 0 0 16px rgba(108, 255, 176, .15);
 }
 .match-item.wrong {
   border-color: var(--err);
@@ -824,7 +722,6 @@ main {
   background: var(--surface-2);
   border-radius: var(--radius-sm);
   border-left: 3px solid var(--accent);
-  border-image: var(--accent-grad) 1;
   margin-bottom: 14px;
   color: var(--text);
   line-height: 1.5;
@@ -840,17 +737,10 @@ main {
   background: var(--surface-2);
   color: var(--text);
   margin-bottom: 12px;
-  transition: border-color .2s, box-shadow .3s;
+  transition: border-color .2s;
 }
-.spell-input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 18px var(--accent-glow);
-}
-.spell-input.correct {
-  border-color: var(--ok);
-  box-shadow: 0 0 0 3px var(--ok-soft), 0 0 18px rgba(108, 255, 176, .25);
-}
+.spell-input:focus { outline: none; border-color: var(--accent); }
+.spell-input.correct { border-color: var(--ok); }
 .spell-input.wrong { border-color: var(--err); }
 
 /* Игра */
@@ -893,10 +783,7 @@ main {
   color: var(--accent);
   display: flex; justify-content: center; margin-bottom: 14px;
 }
-.result-icon .icon {
-  width: 46px; height: 46px; stroke-width: 1.2;
-  filter: drop-shadow(0 0 12px var(--accent-glow));
-}
+.result-icon .icon { width: 46px; height: 46px; stroke-width: 1.2; }
 .result-label { font-size: 13px; color: var(--text-dim); font-weight: 500; }
 .result .score {
   font-size: 30px; font-weight: 700;
@@ -923,7 +810,6 @@ main {
   color: var(--accent);
   fill: var(--accent-soft);
   animation: popIn .5s cubic-bezier(.2,1.4,.5,1) backwards;
-  filter: drop-shadow(0 0 8px var(--accent-glow));
 }
 .result-stars .icon.on:nth-child(1) { animation-delay: .05s; }
 .result-stars .icon.on:nth-child(2) { animation-delay: .17s; }
@@ -957,7 +843,7 @@ body.light .tabbar { background: rgba(244, 240, 251, .9); }
   background: none; border: none; cursor: pointer;
   font-family: inherit;
   color: var(--text-dim);
-  transition: color .2s, transform .2s;
+  transition: color .2s;
   position: relative;
 }
 .tab:hover { color: var(--accent); }
@@ -971,10 +857,6 @@ body.light .tabbar { background: rgba(244, 240, 251, .9); }
   width: 20px; height: 2px;
   background: var(--accent-grad);
   border-radius: 2px;
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-.tab.active .icon {
-  filter: drop-shadow(0 0 8px var(--accent-glow));
 }
 
 /* Пусто */
@@ -987,41 +869,27 @@ body.light .tabbar { background: rgba(244, 240, 251, .9); }
 
 /* Кот-советник */
 .cat-tip {
-  margin-top: 18px;
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-soft);
-  border: 1px solid transparent;
-  background-clip: padding-box;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 80%);
+  border: 1px solid var(--border);
   color: var(--text-dim);
   font-size: 12.5px;
-  display: flex; align-items: center; gap: 9px;
+  display: flex; align-items: center; gap: 10px;
   line-height: 1.45;
   position: relative;
-}
-.cat-tip::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-sm);
-  padding: 1px;
-  background: var(--accent-grad);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: .35;
-  pointer-events: none;
+  z-index: 1;
 }
 .cat-tip .icon { color: var(--accent); flex-shrink: 0; }
 
 /* Лапка-водяной знак */
-#studyHub { position: relative; }
 .paw-mark {
   position: absolute;
   top: -18px; right: -18px;
   width: 132px; height: 132px;
   color: var(--accent);
-  opacity: .06;
+  opacity: .05;
   transform: rotate(-20deg);
   pointer-events: none;
   z-index: 0;
@@ -1037,7 +905,6 @@ body.light .paw-mark { opacity: .04; }
   z-index: 999;
   color: var(--accent);
   line-height: 1;
-  text-shadow: 0 0 14px var(--accent-glow);
   animation: sparkleFly .95s cubic-bezier(.2,.7,.3,1) forwards;
 }
 @keyframes sparkleFly {
@@ -1055,7 +922,7 @@ body.light .paw-mark { opacity: .04; }
     border: 1px solid var(--border);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: var(--shadow), 0 0 80px rgba(176, 108, 255, .08);
+    box-shadow: var(--shadow), 0 0 60px rgba(176, 108, 255, .05);
   }
   .tabbar {
     border-bottom-left-radius: 24px;
@@ -1070,7 +937,6 @@ body.light .paw-mark { opacity: .04; }
 </head>
 <body class="dark">
 
-<!-- ============ SVG-СПРАЙТ ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-cat" viewBox="0 0 24 24">
@@ -1120,13 +986,6 @@ body.light .paw-mark { opacity: .04; }
       <circle cx="15.6" cy="11.4" r=".8" fill="currentColor" stroke="none"/>
       <circle cx="17.4" cy="13.4" r=".8" fill="currentColor" stroke="none"/>
     </symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="4"/>
-      <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/>
-    </symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24">
-      <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/>
-    </symbol>
     <symbol id="i-star" viewBox="0 0 24 24">
       <path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/>
     </symbol>
@@ -1145,23 +1004,14 @@ body.light .paw-mark { opacity: .04; }
 
 <div class="phone">
 
-  <!-- Магический фон -->
   <div class="magic-bg" aria-hidden="true">
     <div class="cyber-grid"></div>
     <div class="magic-moon"></div>
   </div>
 
-  <!-- Котики на фоне -->
   <div class="magic-cats" id="magicCats" aria-hidden="true"></div>
-
-  <!-- Матричный дождь -->
-  <div class="matrix-rain" id="matrixRain" aria-hidden="true"></div>
-
-  <!-- Звёзды -->
+  <div class="binary-field" id="binaryField" aria-hidden="true"></div>
   <div class="starfield" id="starfield" aria-hidden="true"></div>
-
-  <!-- Магические руны -->
-  <div class="magic-bg" aria-hidden="true" id="runeLayer"></div>
 
   <header class="topbar">
     <div class="topbar-row">
@@ -1170,7 +1020,7 @@ body.light .paw-mark { opacity: .04; }
         <span class="brand-text">IT English Hub</span>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
-        <img src="https://i.ibb.co/6P0QqYJ/cats-yin-yang.png" alt="Смена темы" />
+        <img src="99a52d9ec25aac990b05ce9acd190ed6.jpg" alt="Смена темы" />
       </button>
     </div>
     <p class="cat-speech" id="catSpeechWrap">
@@ -1209,14 +1059,15 @@ body.light .paw-mark { opacity: .04; }
       <div class="cards" id="cards-slang"></div>
     </section>
 
-    <!-- ============ ПРАКТИКА ============ -->
     <section class="view" id="view-study">
 
       <div id="studyHub">
         <svg class="paw-mark" aria-hidden="true"><use href="#i-paw"/></svg>
 
-        <h2 class="view-title">Практика</h2>
-        <p class="view-sub">Выберите формат занятия</p>
+        <div class="practice-header">
+          <h2 class="view-title">Практика</h2>
+          <p class="view-sub">Выберите формат занятия</p>
+        </div>
 
         <div class="modes">
           <button class="mode-btn" data-mode="quiz">
@@ -1551,7 +1402,7 @@ const CHEER = [
   "Спокойно, всё получится."
 ];
 
-/* ==================== КОТИКИ НА ФОНЕ ==================== */
+/* ==================== ФОН: КОТИКИ, ЛАПКИ, 0/1 ==================== */
 (function makeMagicCats() {
   const layer = document.getElementById("magicCats");
   if (!layer) return;
@@ -1559,18 +1410,18 @@ const CHEER = [
   const pawSVG = '<svg viewBox="0 0 24 24"><ellipse cx="7.6" cy="8" rx="2.2" ry="2.8"/><ellipse cx="16.4" cy="8" rx="2.2" ry="2.8"/><ellipse cx="4.1" cy="13.7" rx="1.9" ry="2.3"/><ellipse cx="19.9" cy="13.7" rx="1.9" ry="2.3"/><path d="M12 12.6c2.8 0 5.1 2.1 5.1 4.6 0 2-1.7 3.3-3.7 2.9-.9-.2-1.9-.2-2.8 0-2 .4-3.7-.9-3.7-2.9 0-2.5 2.3-4.6 5.1-4.6Z"/></svg>';
 
   const cats = [
-    { top: 8, left: 12, size: 44, rot: -12, svg: catSVG },
-    { top: 22, left: 78, size: 36, rot: 15, svg: catSVG },
-    { top: 45, left: 6, size: 38, rot: -8, svg: catSVG },
-    { top: 58, left: 88, size: 42, rot: 20, svg: catSVG },
-    { top: 75, left: 20, size: 34, rot: -15, svg: catSVG },
-    { top: 88, left: 70, size: 40, rot: 10, svg: catSVG },
-    { top: 35, left: 50, size: 30, rot: 5, svg: catSVG },
-    { top: 68, left: 45, size: 28, rot: -20, svg: catSVG },
-    { top: 15, left: 60, size: 24, rot: 25, svg: pawSVG },
-    { top: 52, left: 30, size: 22, rot: -10, svg: pawSVG },
-    { top: 82, left: 55, size: 26, rot: 18, svg: pawSVG },
-    { top: 30, left: 25, size: 20, rot: -5, svg: pawSVG }
+    { top: 6, left: 8, size: 48, rot: -12, svg: catSVG },
+    { top: 20, left: 78, size: 38, rot: 15, svg: catSVG },
+    { top: 44, left: 4, size: 42, rot: -8, svg: catSVG },
+    { top: 58, left: 88, size: 46, rot: 20, svg: catSVG },
+    { top: 76, left: 18, size: 36, rot: -15, svg: catSVG },
+    { top: 88, left: 70, size: 42, rot: 10, svg: catSVG },
+    { top: 34, left: 48, size: 30, rot: 5, svg: catSVG },
+    { top: 68, left: 42, size: 28, rot: -20, svg: catSVG },
+    { top: 14, left: 58, size: 26, rot: 25, svg: pawSVG },
+    { top: 52, left: 28, size: 22, rot: -10, svg: pawSVG },
+    { top: 82, left: 52, size: 26, rot: 18, svg: pawSVG },
+    { top: 30, left: 22, size: 20, rot: -5, svg: pawSVG }
   ];
 
   cats.forEach(c => {
@@ -1580,37 +1431,36 @@ const CHEER = [
     el.style.left = c.left + "%";
     el.style.width = c.size + "px";
     el.style.height = c.size + "px";
-    el.style.setProperty("--rot", c.rot + "deg");
     el.style.transform = "rotate(" + c.rot + "deg)";
     el.innerHTML = c.svg;
     layer.appendChild(el);
   });
 })();
 
-/* ==================== МАТРИЧНЫЙ ДОЖДЬ ==================== */
-(function makeMatrixRain() {
-  const layer = document.getElementById("matrixRain");
-  if (!layer) return;
-  const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-  const cols = Math.floor(window.innerWidth / 24);
-  for (let i = 0; i < cols; i++) {
-    const col = document.createElement("span");
-    col.className = "matrix-col";
-    col.style.left = (i * 24 + 4) + "px";
-    let txt = "";
-    const len = 8 + Math.floor(Math.random() * 14);
-    for (let j = 0; j < len; j++) {
-      txt += chars[Math.floor(Math.random() * chars.length)];
-    }
-    col.textContent = txt;
-    col.style.animationDuration = (4 + Math.random() * 8) + "s";
-    col.style.animationDelay = (Math.random() * 6) + "s";
-    col.style.opacity = (0.2 + Math.random() * 0.5).toFixed(2);
-    layer.appendChild(col);
-  }
+(function makeBinary() {
+  const field = document.getElementById("binaryField");
+  if (!field) return;
+  const sequences = ["0101", "1010", "1100", "0011", "1001", "0110", "1110", "0001", "1011", "0100"];
+  const positions = [
+    { t: 10, l: 18, s: 12, r: -12 }, { t: 18, l: 62, s: 10, r: 8 },
+    { t: 26, l: 36, s: 14, r: -5 }, { t: 34, l: 80, s: 11, r: 15 },
+    { t: 42, l: 12, s: 13, r: 10 }, { t: 50, l: 54, s: 10, r: -8 },
+    { t: 58, l: 24, s: 12, r: 6 }, { t: 66, l: 70, s: 13, r: -14 },
+    { t: 74, l: 40, s: 11, r: 12 }, { t: 82, l: 14, s: 12, r: -6 },
+    { t: 90, l: 58, s: 10, r: 9 }, { t: 6, l: 44, s: 11, r: -18 }
+  ];
+  positions.forEach((p, i) => {
+    const el = document.createElement("span");
+    el.className = "binary-item";
+    el.textContent = sequences[i % sequences.length];
+    el.style.top = p.t + "%";
+    el.style.left = p.l + "%";
+    el.style.fontSize = p.s + "px";
+    el.style.transform = "rotate(" + p.r + "deg)";
+    field.appendChild(el);
+  });
 })();
 
-/* ==================== ЗВЁЗДЫ ==================== */
 (function makeStars() {
   const sf = document.getElementById("starfield");
   if (!sf) return;
@@ -1622,26 +1472,8 @@ const CHEER = [
     s.style.height = size + "px";
     s.style.top = (Math.random() * 100).toFixed(2) + "%";
     s.style.left = (Math.random() * 100).toFixed(2) + "%";
-    s.style.opacity = (Math.random() * 0.18 + 0.04).toFixed(2);
+    s.style.opacity = (Math.random() * 0.16 + 0.04).toFixed(2);
     sf.appendChild(s);
-  }
-})();
-
-/* ==================== МАГИЧЕСКИЕ РУНЫ ==================== */
-(function makeRunes() {
-  const layer = document.getElementById("runeLayer");
-  if (!layer) return;
-  const runes = ["✦", "✧", "★", "☆", "☽", "☾", "🐾", "✿", "❋", "✶", "⋆", "⍟"];
-  for (let i = 0; i < 14; i++) {
-    const r = document.createElement("span");
-    r.className = "rune";
-    r.textContent = runes[Math.floor(Math.random() * runes.length)];
-    r.style.top = (3 + Math.random() * 94) + "%";
-    r.style.left = (3 + Math.random() * 94) + "%";
-    r.style.fontSize = (9 + Math.random() * 15) + "px";
-    r.style.setProperty("--rot", (Math.random() * 40 - 20) + "deg");
-    r.style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
-    layer.appendChild(r);
   }
 })();
 
@@ -1673,7 +1505,6 @@ function sparkleBurst(el, count = 8) {
 
 /* ==================== ТЕМА ==================== */
 const themeToggle = document.getElementById("themeToggle");
-const themeImg = themeToggle.querySelector("img");
 
 if (localStorage.getItem("theme") === "light") {
   document.body.classList.add("light");
@@ -2004,6 +1835,8 @@ function tapMatch(btn) {
 let spellState = { items: [], i: 0, checked: false };
 
 function initSpell() {
+  document.getElementById("sInput").style.display = "block";
+  document.getElementById("sCheck").style.display = "inline-block";
   const all = [];
   Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push({ term: it.term, ru: it.ru })));
   spellState.items = shuffle(all).slice(0, 10);
@@ -2065,13 +1898,6 @@ document.getElementById("sCheck").addEventListener("click", () => {
 document.getElementById("sInput").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("sCheck").click();
 });
-
-const origInitSpell = initSpell;
-initSpell = function() {
-  document.getElementById("sInput").style.display = "block";
-  document.getElementById("sCheck").style.display = "inline-block";
-  origInitSpell();
-};
 
 /* ==================== ИГРА ==================== */
 let gameState = { i: 0, score: 0, hp: 3, active: false, order: [] };

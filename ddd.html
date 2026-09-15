@@ -1,0 +1,2153 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#07060c" />
+<title>IT English Hub ✦ Magic Cats</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg: #07060c;
+  --surface: #0f0d18;
+  --surface-2: #161226;
+  --text: #e8e2f5;
+  --text-dim: #8a7fa8;
+  --accent: #b06cff;
+  --accent-2: #6ce0ff;
+  --accent-3: #ff6cd4;
+  --accent-grad: linear-gradient(135deg, #b06cff 0%, #6ce0ff 50%, #ff6cd4 100%);
+  --accent-soft: rgba(176, 108, 255, .10);
+  --accent-glow: rgba(176, 108, 255, .35);
+  --on-accent: #07060c;
+  --border: #241d38;
+  --border-strong: #3a2f58;
+  --ok: #6cffb0;
+  --ok-soft: rgba(108, 255, 176, .10);
+  --err: #ff6c8a;
+  --err-soft: rgba(255, 108, 138, .10);
+  --shadow: 0 1px 3px rgba(0, 0, 0, .6), 0 10px 40px rgba(0, 0, 0, .5);
+  --shadow-glow: 0 0 0 1px rgba(176, 108, 255, .15), 0 10px 40px rgba(176, 108, 255, .15);
+  --radius: 18px;
+  --radius-sm: 12px;
+}
+
+body.light {
+  --bg: #f4f0fb;
+  --surface: #ffffff;
+  --surface-2: #f0eaf8;
+  --text: #1a1228;
+  --text-dim: #7a6a94;
+  --accent: #7c3aed;
+  --accent-2: #0ea5e9;
+  --accent-3: #db2777;
+  --accent-grad: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 50%, #db2777 100%);
+  --accent-soft: rgba(124, 58, 237, .08);
+  --accent-glow: rgba(124, 58, 237, .18);
+  --on-accent: #ffffff;
+  --border: #e0d6f0;
+  --border-strong: #c8b8e0;
+  --ok: #059669;
+  --ok-soft: rgba(5, 150, 105, .10);
+  --err: #dc2626;
+  --err-soft: rgba(220, 38, 38, .10);
+  --shadow: 0 1px 3px rgba(80, 50, 120, .04), 0 8px 26px rgba(80, 50, 120, .06);
+  --shadow-glow: 0 0 0 1px rgba(124, 58, 237, .10), 0 10px 34px rgba(124, 58, 237, .12);
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background .5s, color .5s;
+  color-scheme: dark;
+}
+body.light { color-scheme: light; }
+
+/* ============ ИКОНКИ ============ */
+.icon {
+  width: 22px; height: 22px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-sm { width: 16px; height: 16px; stroke-width: 1.6; }
+.icon-lg { width: 34px; height: 34px; stroke-width: 1.3; }
+
+/* ============ КОНТЕЙНЕР ============ */
+.phone {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transition: background .5s, border-color .5s;
+  overflow: hidden;
+}
+
+/* ============ МАГИЧЕСКИЙ ФОН ============ */
+.magic-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Неоновые пятна */
+.magic-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(176, 108, 255, .12), transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(108, 224, 255, .08), transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 108, 212, .06), transparent 40%);
+}
+body.light .magic-bg::before {
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(124, 58, 237, .06), transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(14, 165, 233, .05), transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(219, 39, 119, .04), transparent 40%);
+}
+
+/* Сетка хакера */
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(176, 108, 255, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 108, 255, .04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+body.light .cyber-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, .05) 1px, transparent 1px);
+}
+
+/* Луна */
+.magic-moon {
+  position: absolute;
+  top: 40px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(176, 108, 255, .20),
+    rgba(108, 224, 255, .06) 45%,
+    transparent 72%);
+  filter: blur(6px);
+  opacity: .6;
+  pointer-events: none;
+  z-index: 0;
+}
+body.light .magic-moon {
+  opacity: .3;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(124, 58, 237, .15),
+    rgba(14, 165, 233, .05) 45%,
+    transparent 72%);
+}
+
+/* Коты-силуэты */
+.magic-cats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.magic-cat-item {
+  position: absolute;
+  color: var(--accent);
+  opacity: .06;
+  animation: floatCat 12s ease-in-out infinite;
+}
+body.light .magic-cat-item { opacity: .05; }
+
+.magic-cat-item svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: none;
+  display: block;
+}
+
+@keyframes floatCat {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+}
+
+/* Матричный дождь */
+.matrix-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  opacity: .35;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--accent-2);
+}
+.matrix-col {
+  position: absolute;
+  top: -100%;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  animation: matrixFall linear infinite;
+  text-shadow: 0 0 6px currentColor;
+}
+@keyframes matrixFall {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(200%); }
+}
+body.light .matrix-rain { opacity: .15; }
+
+/* Звёзды */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .6;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .2;
+}
+body.dark .star {
+  box-shadow: 0 0 6px rgba(176, 108, 255, .4);
+}
+body.light .star {
+  box-shadow: none;
+}
+
+/* Руны */
+.rune {
+  position: absolute;
+  color: var(--accent);
+  opacity: .07;
+  pointer-events: none;
+  user-select: none;
+  animation: runePulse 4s ease-in-out infinite;
+}
+body.light .rune { opacity: .05; }
+@keyframes runePulse {
+  0%, 100% { opacity: .05; transform: scale(1) rotate(var(--rot, 0deg)); }
+  50% { opacity: .12; transform: scale(1.1) rotate(var(--rot, 0deg)); }
+}
+
+/* ============ ШАПКА ============ */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  padding: 16px 20px 14px;
+  background: rgba(7, 6, 12, .85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background .5s, border-color .5s;
+}
+body.light .topbar { background: rgba(244, 240, 251, .85); }
+
+.topbar-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+}
+.brand {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 700; font-size: 16px;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+.brand-icon {
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+.brand-text {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent);
+}
+
+/* Переключатель темы */
+.theme-toggle {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color .3s, box-shadow .3s, background .3s;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 16px var(--accent-glow);
+  background: var(--accent-soft);
+}
+.theme-toggle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .7s cubic-bezier(.2,.8,.3,1), filter .5s;
+}
+.theme-toggle.spin img {
+  transform: rotate(360deg) scale(1.05);
+}
+body.light .theme-toggle img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Речь кота */
+.cat-speech {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  display: flex; align-items: center; gap: 7px;
+  min-height: 18px;
+  transition: color .25s;
+  font-family: monospace;
+}
+.cat-speech .icon {
+  color: var(--border-strong);
+  flex-shrink: 0;
+  transition: color .25s, filter .25s;
+}
+.cat-speech.happy { color: var(--accent); }
+.cat-speech.happy .icon {
+  color: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+/* ============ ОСНОВНОЕ ============ */
+main {
+  flex: 1;
+  padding: 20px 18px 110px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.view { display: none; }
+.view.active { display: block; animation: fadeIn .3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.view-title {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin-bottom: 3px;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+}
+.view-title::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
+  background: var(--accent-grad);
+  border-radius: 2px;
+  opacity: .5;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.view-sub {
+  color: var(--text-dim); font-size: 13px;
+  margin-bottom: 16px;
+  margin-top: 6px;
+}
+
+/* Поиск */
+.search {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-family: monospace;
+  margin-bottom: 14px;
+  transition: border-color .2s, box-shadow .3s, background .3s;
+}
+.search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 18px var(--accent-glow);
+}
+.search::placeholder { color: var(--text-dim); }
+
+/* Карточки терминов */
+.cards { display: flex; flex-direction: column; gap: 8px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 15px 17px;
+  cursor: pointer;
+  transition: border-color .25s, box-shadow .35s, transform .15s, background .25s;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent-grad);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.card::after {
+  content: '';
+  position: absolute;
+  top: 8px; right: 10px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-glow);
+}
+.card:hover::before { opacity: .7; }
+.card:hover::after { opacity: .8; }
+.card:active { transform: scale(.995); }
+.card.flipped {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft), 0 0 28px var(--accent-glow), var(--shadow);
+}
+.card.flipped::before { opacity: 1; }
+
+.card .front { font-weight: 600; font-size: 15px; color: var(--text); }
+.card .front small {
+  display: block; font-weight: 400; font-size: 12px;
+  color: var(--text-dim); margin-top: 3px;
+}
+.card .back { display: none; font-size: 13px; color: var(--text); }
+.card .back .ru { font-weight: 500; margin-bottom: 9px; line-height: 1.5; }
+.card .back .ex {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  padding-left: 11px;
+  border-left: 2px solid var(--accent);
+  border-image: var(--accent-grad) 1;
+  font-family: monospace;
+}
+.card.flipped .front { display: none; }
+.card.flipped .back { display: block; }
+
+/* Режимы */
+.modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+.mode-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 12px;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  font-family: inherit;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border-color .25s, transform .15s, box-shadow .35s, background .3s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mode-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-grad);
+  opacity: 0;
+  transition: opacity .3s;
+  z-index: 0;
+}
+.mode-btn > * { position: relative; z-index: 1; }
+.mode-btn:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+.mode-btn:hover::after { opacity: .06; }
+.mode-btn:active { transform: scale(.985); }
+.mode-btn .mode-icon {
+  color: var(--accent);
+  width: 26px; height: 26px;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+.mode-btn .mode-name { font-weight: 600; font-size: 13.5px; }
+.mode-btn .mode-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.35; }
+.mode-btn.wide { grid-column: span 2; flex-direction: row; justify-content: center; gap: 12px; padding: 16px; }
+.mode-btn.wide .mode-text { display: flex; flex-direction: column; align-items: flex-start; }
+.mode-btn.wide .mode-name { font-size: 14px; }
+.mode-btn.wide .mode-desc { text-align: left; }
+
+/* Экраны режимов */
+.mode-screen { display: none; }
+.mode-screen.active { display: block; animation: fadeIn .3s ease; }
+
+.back-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color .2s, border-color .2s, box-shadow .3s, background .2s;
+}
+.back-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+/* Общее */
+.chip-row {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin: 16px 0;
+  justify-content: center;
+}
+.chip {
+  padding: 7px 14px;
+  border-radius: 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 500; font-size: 12.5px;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: monospace;
+}
+.chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+.chip.active {
+  background: var(--accent-grad);
+  color: var(--on-accent);
+  border-color: transparent;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--accent-grad);
+  color: var(--on-accent);
+  font-weight: 600; font-size: 14px;
+  cursor: pointer; font-family: inherit;
+  transition: opacity .18s, border-color .18s, color .18s, box-shadow .3s, transform .15s;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.3), transparent);
+  transform: skewX(-20deg);
+  transition: left .5s;
+}
+.btn:hover::after { left: 120%; }
+.btn:hover {
+  opacity: .95;
+  box-shadow: 0 6px 28px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.btn:active { opacity: .8; transform: translateY(0); }
+.btn-full { width: 100%; }
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow: none;
+}
+.btn-ghost::after { display: none; }
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 18px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.progress {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+  font-size: 12px; color: var(--text-dim);
+  font-weight: 500;
+  font-family: monospace;
+}
+.progress-track {
+  flex: 1; height: 4px;
+  background: var(--border);
+  border-radius: 4px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 0;
+  background: var(--accent-grad);
+  transition: width .35s;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.q-text {
+  font-size: 16px; font-weight: 600; color: var(--text);
+  margin-bottom: 16px; line-height: 1.45;
+  letter-spacing: -.01em;
+}
+
+.opts { display: flex; flex-direction: column; gap: 7px; }
+.opt {
+  padding: 13px 15px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-align: left;
+  font-size: 14px; font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s, box-shadow .3s, transform .15s;
+}
+.opt:hover:not(.disabled) {
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-glow);
+  transform: translateX(2px);
+}
+.opt.correct {
+  background: var(--ok-soft);
+  border-color: var(--ok);
+  color: var(--ok);
+  box-shadow: 0 0 20px rgba(108, 255, 176, .2);
+}
+.opt.wrong {
+  background: var(--err-soft);
+  border-color: var(--err);
+  color: var(--err);
+}
+.opt.disabled { cursor: default; }
+
+.fb {
+  margin-top: 12px;
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 500;
+  display: none;
+  font-family: monospace;
+}
+.fb.show { display: block; animation: fadeIn .25s; }
+.fb.ok { background: var(--ok-soft); color: var(--ok); }
+.fb.no { background: var(--err-soft); color: var(--err); }
+
+/* Флеш-карточки */
+.flash-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 16px; padding: 4px 0;
+}
+.flash-card {
+  width: 100%;
+  min-height: 240px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 36px 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: border-color .3s, box-shadow .35s, transform .2s;
+  position: relative;
+}
+.flash-card::before {
+  content: '✦';
+  position: absolute;
+  top: 12px; right: 16px;
+  font-size: 14px;
+  color: var(--accent);
+  opacity: .4;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+.flash-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+.flash-term {
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--text);
+}
+.flash-hint {
+  font-size: 12px; color: var(--text-dim);
+  margin-top: 12px;
+}
+.flash-ru {
+  font-size: 15px; font-weight: 500; color: var(--text);
+  margin-top: 16px; line-height: 1.55;
+}
+.flash-ex {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  text-align: left;
+  line-height: 1.5;
+  font-family: monospace;
+}
+.flash-nav { display: flex; gap: 10px; width: 100%; }
+.flash-nav .btn { flex: 1; }
+
+/* Сопоставление */
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.match-item {
+  padding: 14px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all .2s;
+  text-align: center;
+  min-height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit;
+  line-height: 1.35;
+}
+.match-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+.match-item.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 20px var(--accent-glow);
+}
+.match-item.matched {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+  color: var(--ok);
+  cursor: default;
+  box-shadow: 0 0 16px rgba(108, 255, 176, .15);
+}
+.match-item.wrong {
+  border-color: var(--err);
+  background: var(--err-soft);
+  animation: shake .35s;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Написание */
+.spell-ru {
+  font-size: 15px; font-weight: 500;
+  padding: 16px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  border-image: var(--accent-grad) 1;
+  margin-bottom: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.spell-input {
+  width: 100%;
+  padding: 13px 15px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: monospace;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  margin-bottom: 12px;
+  transition: border-color .2s, box-shadow .3s;
+}
+.spell-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 18px var(--accent-glow);
+}
+.spell-input.correct {
+  border-color: var(--ok);
+  box-shadow: 0 0 0 3px var(--ok-soft), 0 0 18px rgba(108, 255, 176, .25);
+}
+.spell-input.wrong { border-color: var(--err); }
+
+/* Игра */
+.game-scenario {
+  font-size: 15px; font-weight: 500;
+  padding: 22px 18px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--text);
+  position: relative;
+}
+.game-scenario::before {
+  content: '🐾';
+  position: absolute;
+  top: 8px; left: 12px;
+  font-size: 11px;
+  opacity: .4;
+}
+.game-score {
+  display: flex; justify-content: space-around;
+  margin: 16px 0 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  color: var(--text-dim);
+  font-size: 13px;
+  border: 1px solid var(--border);
+  font-family: monospace;
+}
+.game-score strong { color: var(--accent); font-weight: 700; }
+
+/* Результат */
+.result { text-align: center; padding: 28px 20px; }
+.result-icon {
+  color: var(--accent);
+  display: flex; justify-content: center; margin-bottom: 14px;
+}
+.result-icon .icon {
+  width: 46px; height: 46px; stroke-width: 1.2;
+  filter: drop-shadow(0 0 12px var(--accent-glow));
+}
+.result-label { font-size: 13px; color: var(--text-dim); font-weight: 500; }
+.result .score {
+  font-size: 30px; font-weight: 700;
+  letter-spacing: -.02em;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent);
+  margin: 6px 0 10px;
+}
+.result .msg { color: var(--text-dim); font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
+
+.result-stars {
+  display: flex; justify-content: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.result-stars .icon {
+  width: 24px; height: 24px;
+  color: var(--border-strong);
+  transition: color .3s;
+}
+.result-stars .icon.on {
+  color: var(--accent);
+  fill: var(--accent-soft);
+  animation: popIn .5s cubic-bezier(.2,1.4,.5,1) backwards;
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+.result-stars .icon.on:nth-child(1) { animation-delay: .05s; }
+.result-stars .icon.on:nth-child(2) { animation-delay: .17s; }
+.result-stars .icon.on:nth-child(3) { animation-delay: .29s; }
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-60deg); opacity: 0; }
+  70%  { transform: scale(1.3) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Нижнее меню */
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  background: rgba(7, 6, 12, .9);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  padding: 6px 4px 10px;
+  z-index: 100;
+  transition: background .5s, border-color .5s;
+}
+body.light .tabbar { background: rgba(244, 240, 251, .9); }
+
+.tab {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 2px;
+  border-radius: 10px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit;
+  color: var(--text-dim);
+  transition: color .2s, transform .2s;
+  position: relative;
+}
+.tab:hover { color: var(--accent); }
+.tab-label { font-size: 10px; font-weight: 500; letter-spacing: .02em; font-family: monospace; }
+.tab.active { color: var(--accent); }
+.tab.active .tab-label { font-weight: 700; }
+.tab.active::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 2px;
+  background: var(--accent-grad);
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.tab.active .icon {
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+/* Пусто */
+.empty {
+  text-align: center; padding: 44px 20px;
+  color: var(--text-dim); font-size: 13.5px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.empty .icon { color: var(--accent); opacity: .4; }
+
+/* Кот-советник */
+.cat-tip {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  display: flex; align-items: center; gap: 9px;
+  line-height: 1.45;
+  position: relative;
+}
+.cat-tip::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-sm);
+  padding: 1px;
+  background: var(--accent-grad);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .35;
+  pointer-events: none;
+}
+.cat-tip .icon { color: var(--accent); flex-shrink: 0; }
+
+/* Лапка-водяной знак */
+#studyHub { position: relative; }
+.paw-mark {
+  position: absolute;
+  top: -18px; right: -18px;
+  width: 132px; height: 132px;
+  color: var(--accent);
+  opacity: .06;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 0;
+  fill: currentColor;
+  stroke: none;
+}
+body.light .paw-mark { opacity: .04; }
+
+/* Искры */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  color: var(--accent);
+  line-height: 1;
+  text-shadow: 0 0 14px var(--accent-glow);
+  animation: sparkleFly .95s cubic-bezier(.2,.7,.3,1) forwards;
+}
+@keyframes sparkleFly {
+  0%   { opacity: 0; transform: translate(-50%,-50%) scale(.3) rotate(0deg); }
+  25%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(210deg); }
+}
+
+/* ПК */
+@media (min-width: 481px) {
+  body { padding: 20px 0; align-items: flex-start; }
+  .phone {
+    min-height: calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow), 0 0 80px rgba(176, 108, 255, .08);
+  }
+  .tabbar {
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    bottom: 20px;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .topbar { border-top-left-radius: 24px; border-top-right-radius: 24px; }
+}
+</style>
+</head>
+<body class="dark">
+
+<!-- ============ SVG-СПРАЙТ ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cat" viewBox="0 0 24 24">
+      <path d="M5.6 10.4 4.7 5.3l4.1 2.3h6.4l4.1-2.3-.9 5.1"/>
+      <path d="M5.6 10.4A7.2 7.2 0 0 0 4.6 14c0 3.1 3.3 5.4 7.4 5.4s7.4-2.3 7.4-5.4a7.2 7.2 0 0 0-1-3.6"/>
+      <circle cx="9.6" cy="12.9" r=".85" fill="currentColor" stroke="none"/>
+      <circle cx="14.4" cy="12.9" r=".85" fill="currentColor" stroke="none"/>
+      <path d="M12 15.2v1.3"/>
+      <path d="M12 16.5c-.6.6-1.4.6-1.9.2M12 16.5c.6.6 1.4.6 1.9.2"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3.5 5.5 6.2v5.6c0 4 2.7 7.4 6.5 8.7 3.8-1.3 6.5-4.7 6.5-8.7V6.2L12 3.5Z"/>
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="m9.2 8.5-3.7 3.5 3.7 3.5M14.8 8.5l3.7 3.5-3.7 3.5"/>
+    </symbol>
+    <symbol id="i-text" viewBox="0 0 24 24">
+      <path d="M5 7.5h14M5 12h14M5 16.5h9"/>
+    </symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M20 12a7.5 7.5 0 0 1-11 6.6L4.8 20l1.3-4.2A7.5 7.5 0 1 1 20 12Z"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M12 6.8C10.9 5.7 9 5 6.6 5H4.5v12.5h2.1c2.4 0 4.3.7 5.4 1.8 1.1-1.1 3-1.8 5.4-1.8h2.1V5h-2.1c-2.4 0-4.3.7-5.4 1.8Z"/>
+      <path d="M12 6.8v12.5"/>
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="7.5"/>
+      <circle cx="12" cy="12" r="3"/>
+    </symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24">
+      <rect x="3.5" y="7" width="12" height="13" rx="2.2"/>
+      <path d="M8.5 4h9a2 2 0 0 1 2 2v9"/>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <path d="M9.8 14.2 14.2 9.8"/>
+      <path d="M11.2 7.6 12.6 6.2a3.7 3.7 0 0 1 5.2 5.2l-1.4 1.4"/>
+      <path d="M12.8 16.4l-1.4 1.4a3.7 3.7 0 0 1-5.2-5.2l1.4-1.4"/>
+    </symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24">
+      <path d="M4.5 19.5h3.2L18.4 8.8a1.6 1.6 0 0 0 0-2.3l-1-1a1.6 1.6 0 0 0-2.3 0L4.5 16.3v3.2Z"/>
+      <path d="m13.8 6.8 3.4 3.4"/>
+    </symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24">
+      <rect x="2.8" y="7.5" width="18.4" height="9" rx="4"/>
+      <path d="M7.6 10.6v2.8M6.2 12h2.8"/>
+      <circle cx="15.6" cy="11.4" r=".8" fill="currentColor" stroke="none"/>
+      <circle cx="17.4" cy="13.4" r=".8" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85L12 3.6Z"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="7.6" cy="8" rx="2.2" ry="2.8"/>
+      <ellipse cx="16.4" cy="8" rx="2.2" ry="2.8"/>
+      <ellipse cx="4.1" cy="13.7" rx="1.9" ry="2.3"/>
+      <ellipse cx="19.9" cy="13.7" rx="1.9" ry="2.3"/>
+      <path d="M12 12.6c2.8 0 5.1 2.1 5.1 4.6 0 2-1.7 3.3-3.7 2.9-.9-.2-1.9-.2-2.8 0-2 .4-3.7-.9-3.7-2.9 0-2.5 2.3-4.6 5.1-4.6Z"/>
+    </symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24">
+      <path d="M12 3c.4 4.5 1.5 6.5 6 8-4.5 1.5-5.6 3.5-6 8-.4-4.5-1.5-6.5-6-8 4.5-1.5 5.6-3.5 6-8Z" fill="currentColor" stroke="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="phone">
+
+  <!-- Магический фон -->
+  <div class="magic-bg" aria-hidden="true">
+    <div class="cyber-grid"></div>
+    <div class="magic-moon"></div>
+  </div>
+
+  <!-- Котики на фоне -->
+  <div class="magic-cats" id="magicCats" aria-hidden="true"></div>
+
+  <!-- Матричный дождь -->
+  <div class="matrix-rain" id="matrixRain" aria-hidden="true"></div>
+
+  <!-- Звёзды -->
+  <div class="starfield" id="starfield" aria-hidden="true"></div>
+
+  <!-- Магические руны -->
+  <div class="magic-bg" aria-hidden="true" id="runeLayer"></div>
+
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand">
+        <svg class="icon brand-icon"><use href="#i-sparkle"/></svg>
+        <span class="brand-text">IT English Hub</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+        <img src="https://i.ibb.co/6P0QqYJ/cats-yin-yang.png" alt="Смена темы" />
+      </button>
+    </div>
+    <p class="cat-speech" id="catSpeechWrap">
+      <svg class="icon icon-sm"><use href="#i-cat"/></svg>
+      <span id="catSpeech">Готов к практике?</span>
+    </p>
+  </header>
+
+  <main>
+
+    <section class="view active" id="view-ib">
+      <h2 class="view-title">Информационная безопасность</h2>
+      <p class="view-sub">Термины на каждый день</p>
+      <input type="text" class="search" data-search="ib" placeholder="Поиск термина" />
+      <div class="cards" id="cards-ib"></div>
+    </section>
+
+    <section class="view" id="view-it">
+      <h2 class="view-title">Разработка</h2>
+      <p class="view-sub">Деплой, код-ревью, процессы</p>
+      <input type="text" class="search" data-search="it" placeholder="Поиск термина" />
+      <div class="cards" id="cards-it"></div>
+    </section>
+
+    <section class="view" id="view-abbr">
+      <h2 class="view-title">Аббревиатуры</h2>
+      <p class="view-sub">CVE, SOC, SIEM — расшифровка</p>
+      <input type="text" class="search" data-search="abbr" placeholder="Поиск" />
+      <div class="cards" id="cards-abbr"></div>
+    </section>
+
+    <section class="view" id="view-slang">
+      <h2 class="view-title">Сленг</h2>
+      <p class="view-sub">Как говорят в чатах и на митапах</p>
+      <input type="text" class="search" data-search="slang" placeholder="Поиск" />
+      <div class="cards" id="cards-slang"></div>
+    </section>
+
+    <!-- ============ ПРАКТИКА ============ -->
+    <section class="view" id="view-study">
+
+      <div id="studyHub">
+        <svg class="paw-mark" aria-hidden="true"><use href="#i-paw"/></svg>
+
+        <h2 class="view-title">Практика</h2>
+        <p class="view-sub">Выберите формат занятия</p>
+
+        <div class="modes">
+          <button class="mode-btn" data-mode="quiz">
+            <svg class="icon mode-icon"><use href="#i-target"/></svg>
+            <span class="mode-name">Квиз</span>
+            <span class="mode-desc">4 варианта ответа</span>
+          </button>
+          <button class="mode-btn" data-mode="flash">
+            <svg class="icon mode-icon"><use href="#i-cards"/></svg>
+            <span class="mode-name">Карточки</span>
+            <span class="mode-desc">листайте и запоминайте</span>
+          </button>
+          <button class="mode-btn" data-mode="match">
+            <svg class="icon mode-icon"><use href="#i-link"/></svg>
+            <span class="mode-name">Сопоставление</span>
+            <span class="mode-desc">найдите пару</span>
+          </button>
+          <button class="mode-btn" data-mode="spell">
+            <svg class="icon mode-icon"><use href="#i-pencil"/></svg>
+            <span class="mode-name">Написание</span>
+            <span class="mode-desc">вспомните термин</span>
+          </button>
+          <button class="mode-btn wide" data-mode="game">
+            <svg class="icon mode-icon"><use href="#i-gamepad"/></svg>
+            <span class="mode-text">
+              <span class="mode-name">Secure the System</span>
+              <span class="mode-desc">сценарии защиты на время</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="cat-tip">
+          <svg class="icon icon-sm"><use href="#i-cat"/></svg>
+          <span>Кот советует: 10 минут в день — и слова запомнятся сами. ✦</span>
+        </div>
+      </div>
+
+      <!-- QUIZ -->
+      <div class="mode-screen" id="mode-quiz">
+        <button class="back-btn" data-back>← Назад</button>
+        <div class="panel" id="quizSetup">
+          <div style="display:flex; justify-content:center; color:var(--accent); margin-bottom:14px">
+            <svg class="icon icon-lg"><use href="#i-cat"/></svg>
+          </div>
+          <div style="text-align:center; font-weight:600; font-size:15px; margin-bottom:4px">Выберите категорию</div>
+          <div class="chip-row" id="quizCats">
+            <button class="chip active" data-cat="all">Всё</button>
+            <button class="chip" data-cat="ib">ИБ</button>
+            <button class="chip" data-cat="it">Разработка</button>
+            <button class="chip" data-cat="abbr">Аббревиатуры</button>
+            <button class="chip" data-cat="slang">Сленг</button>
+          </div>
+          <button class="btn btn-full" id="startQuiz">Начать квиз</button>
+        </div>
+        <div class="panel" id="quizBox" style="display:none">
+          <div class="progress">
+            <div class="progress-track"><div class="progress-fill" id="qFill"></div></div>
+            <span id="qCount">0/0</span>
+          </div>
+          <div class="q-text" id="qText">—</div>
+          <div class="opts" id="qOpts"></div>
+          <div class="fb" id="qFb"></div>
+          <button class="btn btn-full" id="qNext" style="margin-top:14px; display:none">Далее</button>
+        </div>
+        <div class="panel result" id="quizResult" style="display:none">
+          <div class="result-icon"><svg class="icon"><use href="#i-cat"/></svg></div>
+          <div class="result-label">Результат</div>
+          <div class="score" id="qrScore">0%</div>
+          <div class="result-stars" id="qrStars">
+            <svg class="icon star"><use href="#i-star"/></svg>
+            <svg class="icon star"><use href="#i-star"/></svg>
+            <svg class="icon star"><use href="#i-star"/></svg>
+          </div>
+          <div class="msg" id="qrMsg"></div>
+          <button class="btn btn-full" id="qRestart">Пройти ещё раз</button>
+        </div>
+      </div>
+
+      <!-- FLASHCARDS -->
+      <div class="mode-screen" id="mode-flash">
+        <button class="back-btn" data-back>← Назад</button>
+        <div class="progress">
+          <div class="progress-track"><div class="progress-fill" id="fFill"></div></div>
+          <span id="fCount">0/0</span>
+        </div>
+        <div class="flash-wrap">
+          <div class="flash-card" id="flashCard">
+            <div class="flash-term" id="fTerm">—</div>
+            <div class="flash-hint" id="fHint">Нажмите, чтобы увидеть перевод</div>
+            <div id="fBack" style="display:none; width:100%">
+              <div class="flash-ru" id="fRu"></div>
+              <div class="flash-ex" id="fEx"></div>
+            </div>
+          </div>
+          <div class="flash-nav">
+            <button class="btn btn-ghost" id="fPrev">← Назад</button>
+            <button class="btn" id="fNext">Далее →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MATCHING -->
+      <div class="mode-screen" id="mode-match">
+        <button class="back-btn" data-back>← Назад</button>
+        <div class="progress">
+          <div class="progress-track"><div class="progress-fill" id="mFill"></div></div>
+          <span id="mCount">0/0</span>
+        </div>
+        <div style="text-align:center; font-size:13px; color:var(--text-dim); margin-bottom:14px">
+          Найдите пару: термин — перевод
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+        <div class="fb" id="mFb" style="margin-top:14px"></div>
+      </div>
+
+      <!-- SPELLING -->
+      <div class="mode-screen" id="mode-spell">
+        <button class="back-btn" data-back>← Назад</button>
+        <div class="progress">
+          <div class="progress-track"><div class="progress-fill" id="sFill"></div></div>
+          <span id="sCount">0/0</span>
+        </div>
+        <div class="panel">
+          <div style="text-align:center; font-size:13px; color:var(--text-dim); margin-bottom:12px">
+            Напишите термин по-английски
+          </div>
+          <div class="spell-ru" id="sRu">—</div>
+          <input type="text" class="spell-input" id="sInput" placeholder="type in English..." autocomplete="off" autocapitalize="off" spellcheck="false" />
+          <button class="btn btn-full" id="sCheck">Проверить</button>
+          <div class="fb" id="sFb"></div>
+        </div>
+      </div>
+
+      <!-- GAME -->
+      <div class="mode-screen" id="mode-game">
+        <button class="back-btn" data-back>← Назад</button>
+        <div class="panel">
+          <div class="game-scenario" id="gScenario">Нажмите «Старт», чтобы начать</div>
+          <div class="opts" id="gOpts"></div>
+          <div class="game-score">
+            <span>Очки: <strong id="gScore">0</strong></span>
+            <span>Прочность: <strong id="gHp">3</strong></span>
+          </div>
+          <button class="btn btn-full" id="gStart" style="margin-top:16px">Старт</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <nav class="tabbar">
+    <button class="tab active" data-view="ib">
+      <svg class="icon"><use href="#i-shield"/></svg>
+      <span class="tab-label">ИБ</span>
+    </button>
+    <button class="tab" data-view="it">
+      <svg class="icon"><use href="#i-code"/></svg>
+      <span class="tab-label">РАЗРАБОТКА</span>
+    </button>
+    <button class="tab" data-view="abbr">
+      <svg class="icon"><use href="#i-text"/></svg>
+      <span class="tab-label">АББР</span>
+    </button>
+    <button class="tab" data-view="slang">
+      <svg class="icon"><use href="#i-chat"/></svg>
+      <span class="tab-label">СЛЕНГ</span>
+    </button>
+    <button class="tab" data-view="study">
+      <svg class="icon"><use href="#i-book"/></svg>
+      <span class="tab-label">ПРАКТИКА</span>
+    </button>
+  </nav>
+
+</div>
+
+<script>
+/* ==================== ДАННЫЕ ==================== */
+const DATA = {
+  ib: [
+    { term: "Vulnerability", ru: "Уязвимость — слабое место в системе.", ex: "The patch fixes a critical vulnerability." },
+    { term: "Exploit", ru: "Эксплойт — код, использующий уязвимость.", ex: "Hackers used a zero-day exploit." },
+    { term: "Breach", ru: "Утечка / взлом данных.", ex: "A data breach affected 2M users." },
+    { term: "Patch", ru: "Патч — обновление, закрывающее уязвимость.", ex: "Install the latest patch." },
+    { term: "Threat actor", ru: "Угрожающая сторона — хакер или группа.", ex: "The threat actor is linked to APT." },
+    { term: "Firewall", ru: "Файрвол — фильтр трафика.", ex: "Configure the firewall to block traffic." },
+    { term: "Encryption", ru: "Шифрование данных.", ex: "Use AES encryption at rest." },
+    { term: "Malware", ru: "Вредоносное ПО.", ex: "The malware spread via phishing." },
+    { term: "Phishing", ru: "Фишинг — обман для кражи данных.", ex: "He clicked a phishing link." },
+    { term: "Ransomware", ru: "Шифровальщик с требованием выкупа.", ex: "Ransomware locked all files." },
+    { term: "Penetration test", ru: "Пентест — проверка защиты на прочность.", ex: "We hired a firm for a pentest." },
+    { term: "Zero-day", ru: "Уязвимость без патча.", ex: "The zero-day was sold on the dark web." },
+    { term: "Backdoor", ru: "Бэкдор — скрытый доступ.", ex: "Attackers left a backdoor." },
+    { term: "Sandbox", ru: "Песочница — изолированная среда.", ex: "Run the file in a sandbox." },
+    { term: "Log", ru: "Лог — запись событий системы.", ex: "Check the logs for activity." },
+    { term: "Brute force", ru: "Брутфорс — перебор паролей.", ex: "Brute force attack on SSH." },
+    { term: "Payload", ru: "Полезная нагрузка вредоноса.", ex: "The payload downloaded a trojan." },
+    { term: "Rootkit", ru: "Руткит — скрытый вредонос.", ex: "The rootkit hid from antivirus." }
+  ],
+  it: [
+    { term: "Deploy", ru: "Развернуть — выкатить код на сервер.", ex: "We deploy to production on Fridays." },
+    { term: "Rollback", ru: "Откат к предыдущей версии.", ex: "The update broke things, do a rollback." },
+    { term: "Hotfix", ru: "Срочное исправление.", ex: "They released a hotfix in an hour." },
+    { term: "Bug", ru: "Баг — ошибка в коде.", ex: "It's not a bug, it's a feature!" },
+    { term: "Merge", ru: "Слияние веток кода.", ex: "Merge the feature branch into main." },
+    { term: "Commit", ru: "Коммит — сохранение изменений.", ex: "Commit your changes before switching." },
+    { term: "Repository", ru: "Репозиторий — хранилище кода.", ex: "Clone the repository first." },
+    { term: "Branch", ru: "Ветка в git.", ex: "Create a new branch for the fix." },
+    { term: "Fork", ru: "Форк — копия чужого репозитория.", ex: "Fork the repo and open a PR." },
+    { term: "Pull request", ru: "PR — запрос на слияние кода.", ex: "I opened a pull request." },
+    { term: "Legacy code", ru: "Наследственный код.", ex: "Nobody wants to touch legacy code." },
+    { term: "Refactor", ru: "Рефакторинг — улучшение кода.", ex: "We need to refactor this module." },
+    { term: "Code review", ru: "Ревью кода — проверка коллегами.", ex: "Waiting for code review." },
+    { term: "Tech debt", ru: "Технический долг.", ex: "We'll pay off tech debt next sprint." },
+    { term: "Sprint", ru: "Спринт — короткий цикл работы.", ex: "This sprint we ship the new API." },
+    { term: "Standup", ru: "Планёрка стоя.", ex: "Daily standup at 10 AM." },
+    { term: "Release", ru: "Релиз — публикация версии.", ex: "The release is scheduled for Monday." }
+  ],
+  abbr: [
+    { term: "CVE", ru: "Common Vulnerabilities and Exposures — ID уязвимости.", ex: "CVE-2024-1234 is critical." },
+    { term: "SOC", ru: "Security Operations Center — центр мониторинга.", ex: "The SOC detected the intrusion." },
+    { term: "SIEM", ru: "Security Information and Event Management.", ex: "SIEM flagged unusual logins." },
+    { term: "IDS / IPS", ru: "Intrusion Detection / Prevention System.", ex: "The IPS blocked the packet." },
+    { term: "MITM", ru: "Man-in-the-Middle — атака посередине.", ex: "Use HTTPS to prevent MITM." },
+    { term: "XSS", ru: "Cross-Site Scripting.", ex: "Sanitize input to avoid XSS." },
+    { term: "SQLi", ru: "SQL Injection.", ex: "The form was vulnerable to SQLi." },
+    { term: "RBAC", ru: "Role-Based Access Control.", ex: "We use RBAC for admin rights." },
+    { term: "MFA", ru: "Multi-Factor Authentication.", ex: "Enable MFA for all accounts." },
+    { term: "VPN", ru: "Virtual Private Network.", ex: "Connect via VPN first." },
+    { term: "RCE", ru: "Remote Code Execution.", ex: "That CVE allows RCE." },
+    { term: "APT", ru: "Advanced Persistent Threat.", ex: "The APT stayed hidden for months." },
+    { term: "DLP", ru: "Data Loss Prevention.", ex: "DLP blocked the email." },
+    { term: "EDR", ru: "Endpoint Detection and Response.", ex: "EDR caught the ransomware." },
+    { term: "WAF", ru: "Web Application Firewall.", ex: "The WAF filtered bad requests." },
+    { term: "API", ru: "Application Programming Interface.", ex: "The API returns JSON." },
+    { term: "CI/CD", ru: "Continuous Integration / Delivery.", ex: "We use CI/CD pipelines." },
+    { term: "UI/UX", ru: "User Interface / User Experience.", ex: "The UI/UX needs a rework." },
+    { term: "OOP", ru: "Object-Oriented Programming.", ex: "OOP helps structure code." },
+    { term: "SQL", ru: "Structured Query Language.", ex: "Write a SQL query to join tables." }
+  ],
+  slang: [
+    { term: "LGTM", ru: "Looks Good To Me — «норм» в ревью.", ex: "LGTM, merge it!" },
+    { term: "WIP", ru: "Work In Progress — в работе.", ex: "This PR is still WIP." },
+    { term: "Script kiddie", ru: "Новичок без понимания.", ex: "He's just a script kiddie." },
+    { term: "Red team", ru: "Атакующие в учениях.", ex: "Red team breached the perimeter." },
+    { term: "Blue team", ru: "Защитники.", ex: "Blue team stopped the attack." },
+    { term: "Threat hunting", ru: "Активный поиск скрытых атак.", ex: "Threat hunting found a backdoor." },
+    { term: "To ship it", ru: "Выкатить, зарелизить.", ex: "Let's ship it and fix later." },
+    { term: "Dogfooding", ru: "Использование своего продукта.", ex: "We're dogfooding the new auth." },
+    { term: "Rubber duck debugging", ru: "Объяснение кода уточке.", ex: "I rubber ducked it and found the bug." },
+    { term: "Bikeshedding", ru: "Спор о мелочах.", ex: "Stop bikeshedding, focus!" },
+    { term: "Firefighting", ru: "Тушение пожаров — срочные проблемы.", ex: "All day firefighting prod issues." },
+    { term: "On-call", ru: "Дежурство по инцидентам.", ex: "I'm on-call this week." },
+    { term: "Postmortem", ru: "Разбор инцидента.", ex: "Write a postmortem for the outage." },
+    { term: "Blast radius", ru: "Масштаб последствий.", ex: "We limited the blast radius." },
+    { term: "To pivot", ru: "Пивот между машинами.", ex: "Attacker pivoted to internal network." }
+  ]
+};
+
+const QUIZ = [
+  { q: "Что такое 'vulnerability'?", a: ["Уязвимость","Вирус","Пароль","Сервер"], c: 0, cat: "ib" },
+  { q: "Что такое 'breach'?", a: ["Патч","Утечка/взлом","Шифрование","Логин"], c: 1, cat: "ib" },
+  { q: "Что означает 'ransomware'?", a: ["Шифровальщик","Антивирус","Браузер","Файрвол"], c: 0, cat: "ib" },
+  { q: "Что такое 'penetration test'?", a: ["Тест скорости","Проверка защиты","Установка ПО","Бэкап"], c: 1, cat: "ib" },
+  { q: "Что означает 'zero-day'?", a: ["Нулевой день","Уязвимость без патча","Релиз","Пустой лог"], c: 1, cat: "ib" },
+  { q: "Что такое 'phishing'?", a: ["Обман для кражи данных","Шифрование","Бэкап","Тестирование"], c: 0, cat: "ib" },
+  { q: "Что такое 'payload'?", a: ["Скрипт атаки","Нагрузка вредоноса","Пароль","Патч"], c: 1, cat: "ib" },
+  { q: "Что означает 'brute force'?", a: ["Перебор паролей","Сильная защита","Пожар","Патч"], c: 0, cat: "ib" },
+  { q: "Что означает 'rollback'?", a: ["Развернуть","Откатить","Удалить","Зашифровать"], c: 1, cat: "it" },
+  { q: "Что такое 'hotfix'?", a: ["Срочное исправление","Горячий сервер","Обновление ОС","Баг"], c: 0, cat: "it" },
+  { q: "Что такое 'merge'?", a: ["Слияние веток","Удаление","Компиляция","Тест"], c: 0, cat: "it" },
+  { q: "Что такое 'pull request'?", a: ["Запрос на слияние","Удаление кода","Бэкап","Релиз"], c: 0, cat: "it" },
+  { q: "Что такое 'legacy code'?", a: ["Новый код","Наследственный код","Чужой код","Пустой файл"], c: 1, cat: "it" },
+  { q: "Что такое 'sprint'?", a: ["Бег","Цикл работы","Баг","Сервер"], c: 1, cat: "it" },
+  { q: "Что такое 'standup'?", a: ["Планёрка стоя","Прыжок","Ошибка","Стоп"], c: 0, cat: "it" },
+  { q: "Что означает CVE?", a: ["Common Vulnerabilities and Exposures","Central Virus Engine","Cyber Verification","Code Editor"], c: 0, cat: "abbr" },
+  { q: "Что означает SOC?", a: ["Security Operations Center","System Online Control","Secure Code","Server Core"], c: 0, cat: "abbr" },
+  { q: "Что означает SIEM?", a: ["Security Information and Event Management","System Email","Secure Internet","Server Monitor"], c: 0, cat: "abbr" },
+  { q: "Что означает MFA?", a: ["Multi-Factor Authentication","Malware Analysis","Main Firewall","Managed File"], c: 0, cat: "abbr" },
+  { q: "Что означает RCE?", a: ["Remote Code Execution","Rapid Encryption","Root Engine","Runtime Error"], c: 0, cat: "abbr" },
+  { q: "Что означает WAF?", a: ["Web Application Firewall","Wireless Filter","Wide Firewall","Web Audit"], c: 0, cat: "abbr" },
+  { q: "Что означает API?", a: ["Application Programming Interface","App Internal","Auto Process","Access Point"], c: 0, cat: "abbr" },
+  { q: "Что означает CI/CD?", a: ["Continuous Integration / Delivery","Code Insert / Delete","Central Int / Dev","Cache Index"], c: 0, cat: "abbr" },
+  { q: "Что значит 'LGTM'?", a: ["Looks Good To Me","Let's Go Meeting","Long Term","Log Message"], c: 0, cat: "slang" },
+  { q: "Что значит 'WIP'?", a: ["Work In Progress","Web Protocol","Warning Intrusion","Wireless IP"], c: 0, cat: "slang" },
+  { q: "Кто такой 'script kiddie'?", a: ["Новичок без понимания","Опытный хакер","Разработчик скриптов","Тестировщик"], c: 0, cat: "slang" },
+  { q: "Что такое 'postmortem'?", a: ["Разбор инцидента","Смерть сервера","Откат","Деплой"], c: 0, cat: "slang" },
+  { q: "Что такое 'blast radius'?", a: ["Масштаб последствий","Мощность атаки","Скорость сети","Размер БД"], c: 0, cat: "slang" },
+  { q: "Что значит 'on-call'?", a: ["Дежурство","Звонок клиенту","Онлайн-конференция","Вызов функции"], c: 0, cat: "slang" },
+  { q: "Что такое 'bikeshedding'?", a: ["Спор о мелочах","Поездка на велосипеде","Код-ревью","Деплой"], c: 0, cat: "slang" },
+  { q: "Что такое 'rubber duck debugging'?", a: ["Объяснение кода уточке","Отладка утёнком","Игра","Сон"], c: 0, cat: "slang" }
+];
+
+const GAME_SCENARIOS = [
+  { s: "Атака с подозрительного IP. Что включить?", o: ["Firewall","Coffee machine","Printer","Monitor"], c: 0 },
+  { s: "Пароли хранятся в открытом виде. Что использовать?", o: ["Encryption","Compression","Duplication","Deletion"], c: 0 },
+  { s: "Письмо с просьбой ввести пароль. Что это?", o: ["Phishing","Patch","Deploy","Backup"], c: 0 },
+  { s: "В коде нашли дыру. Как это называется?", o: ["Vulnerability","Feature","Update","Plugin"], c: 0 },
+  { s: "Нужен второй фактор входа. Что включить?", o: ["MFA","VPN","DNS","CPU"], c: 0 },
+  { s: "Файлы зашифрованы, требуют выкуп. Что это?", o: ["Ransomware","Firewall","Sandbox","Patch"], c: 0 },
+  { s: "Что происходило ночью на сервере?", o: ["Logs","Wallpaper","Browser tabs","Clipboard"], c: 0 },
+  { s: "MITM перехватывает трафик. Что использовать?", o: ["VPN","Excel","Notepad","Calculator"], c: 0 },
+  { s: "Нужно фильтровать веб-запросы. Что поставить?", o: ["WAF","CPU","RAM","SSD"], c: 0 },
+  { s: "Требуется ограничить права по ролям. Что настроить?", o: ["RBAC","DNS","BIOS","CDN"], c: 0 }
+];
+
+const CAT_PHRASES = [
+  "Готов к практике?",
+  "Ты справишься. ✦",
+  "Ещё немного — и заговоришь как сеньор.",
+  "Безопасность — это процесс, а не продукт.",
+  "Повторение — лучший способ запомнить.",
+  "Маленькими шагами к большому результату.",
+  "Не спеши: точность важнее скорости.",
+  "Сегодня хороший день для нового слова.",
+  "Тайны слов раскроются перед тобой. ✦"
+];
+
+const PRAISE = [
+  "Мур! Верно.",
+  "Отлично, так держать.",
+  "Точно в цель! ✦",
+  "Умница. Ещё одно слово в копилку.",
+  "Идеально. Кот доволен. 🐾"
+];
+
+const CHEER = [
+  "Ничего, попробуем ещё.",
+  "Почти! Загляни в карточки.",
+  "Мур, не сдавайся.",
+  "Ошибка — тоже путь к знанию.",
+  "Спокойно, всё получится."
+];
+
+/* ==================== КОТИКИ НА ФОНЕ ==================== */
+(function makeMagicCats() {
+  const layer = document.getElementById("magicCats");
+  if (!layer) return;
+  const catSVG = '<svg viewBox="0 0 24 24"><path d="M5.6 10.4 4.7 5.3l4.1 2.3h6.4l4.1-2.3-.9 5.1"/><path d="M5.6 10.4A7.2 7.2 0 0 0 4.6 14c0 3.1 3.3 5.4 7.4 5.4s7.4-2.3 7.4-5.4a7.2 7.2 0 0 0-1-3.6"/><circle cx="9.6" cy="12.9" r=".85"/><circle cx="14.4" cy="12.9" r=".85"/><path d="M12 15.2v1.3"/><path d="M12 16.5c-.6.6-1.4.6-1.9.2M12 16.5c.6.6 1.4.6 1.9.2"/></svg>';
+  const pawSVG = '<svg viewBox="0 0 24 24"><ellipse cx="7.6" cy="8" rx="2.2" ry="2.8"/><ellipse cx="16.4" cy="8" rx="2.2" ry="2.8"/><ellipse cx="4.1" cy="13.7" rx="1.9" ry="2.3"/><ellipse cx="19.9" cy="13.7" rx="1.9" ry="2.3"/><path d="M12 12.6c2.8 0 5.1 2.1 5.1 4.6 0 2-1.7 3.3-3.7 2.9-.9-.2-1.9-.2-2.8 0-2 .4-3.7-.9-3.7-2.9 0-2.5 2.3-4.6 5.1-4.6Z"/></svg>';
+
+  const cats = [
+    { top: 8, left: 12, size: 44, rot: -12, svg: catSVG },
+    { top: 22, left: 78, size: 36, rot: 15, svg: catSVG },
+    { top: 45, left: 6, size: 38, rot: -8, svg: catSVG },
+    { top: 58, left: 88, size: 42, rot: 20, svg: catSVG },
+    { top: 75, left: 20, size: 34, rot: -15, svg: catSVG },
+    { top: 88, left: 70, size: 40, rot: 10, svg: catSVG },
+    { top: 35, left: 50, size: 30, rot: 5, svg: catSVG },
+    { top: 68, left: 45, size: 28, rot: -20, svg: catSVG },
+    { top: 15, left: 60, size: 24, rot: 25, svg: pawSVG },
+    { top: 52, left: 30, size: 22, rot: -10, svg: pawSVG },
+    { top: 82, left: 55, size: 26, rot: 18, svg: pawSVG },
+    { top: 30, left: 25, size: 20, rot: -5, svg: pawSVG }
+  ];
+
+  cats.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "magic-cat-item";
+    el.style.top = c.top + "%";
+    el.style.left = c.left + "%";
+    el.style.width = c.size + "px";
+    el.style.height = c.size + "px";
+    el.style.setProperty("--rot", c.rot + "deg");
+    el.style.transform = "rotate(" + c.rot + "deg)";
+    el.innerHTML = c.svg;
+    layer.appendChild(el);
+  });
+})();
+
+/* ==================== МАТРИЧНЫЙ ДОЖДЬ ==================== */
+(function makeMatrixRain() {
+  const layer = document.getElementById("matrixRain");
+  if (!layer) return;
+  const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+  const cols = Math.floor(window.innerWidth / 24);
+  for (let i = 0; i < cols; i++) {
+    const col = document.createElement("span");
+    col.className = "matrix-col";
+    col.style.left = (i * 24 + 4) + "px";
+    let txt = "";
+    const len = 8 + Math.floor(Math.random() * 14);
+    for (let j = 0; j < len; j++) {
+      txt += chars[Math.floor(Math.random() * chars.length)];
+    }
+    col.textContent = txt;
+    col.style.animationDuration = (4 + Math.random() * 8) + "s";
+    col.style.animationDelay = (Math.random() * 6) + "s";
+    col.style.opacity = (0.2 + Math.random() * 0.5).toFixed(2);
+    layer.appendChild(col);
+  }
+})();
+
+/* ==================== ЗВЁЗДЫ ==================== */
+(function makeStars() {
+  const sf = document.getElementById("starfield");
+  if (!sf) return;
+  for (let i = 0; i < 52; i++) {
+    const s = document.createElement("span");
+    s.className = "star";
+    const size = (Math.random() * 2.5 + 1.5).toFixed(1);
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+    s.style.top = (Math.random() * 100).toFixed(2) + "%";
+    s.style.left = (Math.random() * 100).toFixed(2) + "%";
+    s.style.opacity = (Math.random() * 0.18 + 0.04).toFixed(2);
+    sf.appendChild(s);
+  }
+})();
+
+/* ==================== МАГИЧЕСКИЕ РУНЫ ==================== */
+(function makeRunes() {
+  const layer = document.getElementById("runeLayer");
+  if (!layer) return;
+  const runes = ["✦", "✧", "★", "☆", "☽", "☾", "🐾", "✿", "❋", "✶", "⋆", "⍟"];
+  for (let i = 0; i < 14; i++) {
+    const r = document.createElement("span");
+    r.className = "rune";
+    r.textContent = runes[Math.floor(Math.random() * runes.length)];
+    r.style.top = (3 + Math.random() * 94) + "%";
+    r.style.left = (3 + Math.random() * 94) + "%";
+    r.style.fontSize = (9 + Math.random() * 15) + "px";
+    r.style.setProperty("--rot", (Math.random() * 40 - 20) + "deg");
+    r.style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
+    layer.appendChild(r);
+  }
+})();
+
+/* ==================== ИСКРЫ ==================== */
+const SPARK_CHARS = ["✦", "✧", "★", "✨"];
+
+function sparkleBurst(el, count = 8) {
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  if (!r.width && !r.height) return;
+  const cx = r.left + r.width / 2;
+  const cy = r.top + r.height / 2;
+
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement("span");
+    s.className = "sparkle";
+    s.textContent = SPARK_CHARS[Math.floor(Math.random() * SPARK_CHARS.length)];
+    const ang = (Math.PI * 2 * i) / count + Math.random() * 0.7;
+    const dist = 42 + Math.random() * 52;
+    s.style.setProperty("--dx", (Math.cos(ang) * dist).toFixed(1) + "px");
+    s.style.setProperty("--dy", (Math.sin(ang) * dist).toFixed(1) + "px");
+    s.style.left = cx + "px";
+    s.style.top = cy + "px";
+    s.style.fontSize = (10 + Math.random() * 11).toFixed(1) + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1000);
+  }
+}
+
+/* ==================== ТЕМА ==================== */
+const themeToggle = document.getElementById("themeToggle");
+const themeImg = themeToggle.querySelector("img");
+
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+  document.body.classList.remove("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+  themeToggle.classList.add("spin");
+  setTimeout(() => themeToggle.classList.remove("spin"), 700);
+});
+
+/* ==================== КОТ ГОВОРИТ ==================== */
+const speechEl = document.getElementById("catSpeech");
+const speechWrap = document.getElementById("catSpeechWrap");
+
+function catSay(text, mood) {
+  speechEl.textContent = text;
+  speechWrap.classList.toggle("happy", mood === "happy");
+  clearTimeout(catSay._t);
+  catSay._t = setTimeout(() => speechWrap.classList.remove("happy"), 1800);
+}
+
+/* ==================== КАРТОЧКИ ==================== */
+function renderCards(cat, q = "") {
+  const grid = document.getElementById("cards-" + cat);
+  const items = DATA[cat].filter(it => {
+    if (!q) return true;
+    q = q.toLowerCase();
+    return it.term.toLowerCase().includes(q) || it.ru.toLowerCase().includes(q);
+  });
+  if (!items.length) {
+    grid.innerHTML = `<div class="empty">
+      <svg class="icon icon-lg"><use href="#i-cat"/></svg>
+      <span>Ничего не найдено</span>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = items.map(it => `
+    <div class="card">
+      <div class="front">${it.term}<small>Нажмите, чтобы увидеть перевод</small></div>
+      <div class="back">
+        <div class="ru">${it.ru}</div>
+        <div class="ex">${it.ex}</div>
+      </div>
+    </div>
+  `).join("");
+  grid.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => c.classList.toggle("flipped")));
+}
+["ib","it","abbr","slang"].forEach(c => renderCards(c));
+
+document.querySelectorAll(".search").forEach(inp => {
+  inp.addEventListener("input", e => renderCards(e.target.dataset.search, e.target.value));
+});
+
+/* ==================== НАВИГАЦИЯ ==================== */
+let phraseIdx = 0;
+function newPhrase() {
+  phraseIdx = (phraseIdx + 1) % CAT_PHRASES.length;
+  speechEl.textContent = CAT_PHRASES[phraseIdx];
+  speechWrap.classList.remove("happy");
+}
+setInterval(newPhrase, 12000);
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    const v = tab.dataset.view;
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === tab));
+    document.querySelectorAll(".view").forEach(x => x.classList.toggle("active", x.id === "view-" + v));
+    window.scrollTo(0, 0);
+    newPhrase();
+  });
+});
+
+/* ==================== ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ ==================== */
+const studyHub = document.getElementById("studyHub");
+const modeScreens = document.querySelectorAll(".mode-screen");
+
+document.querySelectorAll(".mode-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const mode = btn.dataset.mode;
+    studyHub.style.display = "none";
+    modeScreens.forEach(s => s.classList.toggle("active", s.id === "mode-" + mode));
+    if (mode === "flash") initFlash();
+    if (mode === "match") initMatch();
+    if (mode === "spell") initSpell();
+    if (mode === "game") resetGame();
+    if (mode === "quiz") resetQuiz();
+    window.scrollTo(0, 0);
+  });
+});
+
+document.querySelectorAll("[data-back]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    modeScreens.forEach(s => s.classList.remove("active"));
+    studyHub.style.display = "block";
+    window.scrollTo(0, 0);
+  });
+});
+
+/* ==================== QUIZ ==================== */
+let quizState = { qs: [], i: 0, score: 0, cat: "all", answered: false };
+
+document.querySelectorAll("#quizCats .chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll("#quizCats .chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    quizState.cat = chip.dataset.cat;
+  });
+});
+
+function shuffle(a) { return [...a].sort(() => Math.random() - 0.5); }
+
+function resetQuiz() {
+  document.getElementById("quizSetup").style.display = "block";
+  document.getElementById("quizBox").style.display = "none";
+  document.getElementById("quizResult").style.display = "none";
+}
+
+document.getElementById("startQuiz").addEventListener("click", () => {
+  let pool = quizState.cat === "all" ? QUIZ : QUIZ.filter(q => q.cat === quizState.cat);
+  pool = shuffle(pool).slice(0, 10);
+  if (!pool.length) { alert("Нет вопросов"); return; }
+  quizState.qs = pool;
+  quizState.i = 0;
+  quizState.score = 0;
+  document.getElementById("quizSetup").style.display = "none";
+  document.getElementById("quizResult").style.display = "none";
+  document.getElementById("quizBox").style.display = "block";
+  showQ();
+});
+
+function showQ() {
+  const q = quizState.qs[quizState.i];
+  const t = quizState.qs.length;
+  quizState.answered = false;
+  document.getElementById("qCount").textContent = `${quizState.i + 1} / ${t}`;
+  document.getElementById("qFill").style.width = `${(quizState.i / t) * 100}%`;
+  document.getElementById("qText").textContent = q.q;
+  const optsEl = document.getElementById("qOpts");
+  optsEl.innerHTML = q.a.map((txt, i) => `<button class="opt" data-i="${i}">${txt}</button>`).join("");
+  optsEl.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => answerQ(parseInt(b.dataset.i))));
+  const fb = document.getElementById("qFb");
+  fb.className = "fb";
+  fb.textContent = "";
+  document.getElementById("qNext").style.display = "none";
+}
+
+function answerQ(idx) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  const q = quizState.qs[quizState.i];
+  const opts = document.querySelectorAll("#qOpts .opt");
+  const fb = document.getElementById("qFb");
+  opts.forEach((b, i) => {
+    b.classList.add("disabled");
+    if (i === q.c) b.classList.add("correct");
+    if (i === idx && i !== q.c) b.classList.add("wrong");
+  });
+  if (idx === q.c) {
+    quizState.score++;
+    fb.className = "fb ok show";
+    fb.textContent = "Верно.";
+    sparkleBurst(opts[q.c], 8);
+    catSay(PRAISE[Math.floor(Math.random() * PRAISE.length)], "happy");
+  } else {
+    fb.className = "fb no show";
+    fb.textContent = "Неверно. Правильный ответ подсвечен.";
+    catSay(CHEER[Math.floor(Math.random() * CHEER.length)]);
+  }
+  const nextBtn = document.getElementById("qNext");
+  nextBtn.style.display = "block";
+  nextBtn.textContent = quizState.i === quizState.qs.length - 1 ? "Результат" : "Далее →";
+}
+
+document.getElementById("qNext").addEventListener("click", () => {
+  quizState.i++;
+  if (quizState.i >= quizState.qs.length) showQResult();
+  else showQ();
+});
+
+function showQResult() {
+  document.getElementById("quizBox").style.display = "none";
+  document.getElementById("quizResult").style.display = "block";
+  const t = quizState.qs.length;
+  const pct = Math.round((quizState.score / t) * 100);
+  let msg;
+  if (pct >= 90) msg = "Отличный результат. Материал освоен уверенно.";
+  else if (pct >= 70) msg = "Хороший результат. Осталось закрепить детали.";
+  else if (pct >= 50) msg = "Неплохо. Стоит ещё раз пройтись по карточкам.";
+  else msg = "Пока сложно. Вернитесь к карточкам и попробуйте снова.";
+  document.getElementById("qrScore").textContent = `${quizState.score} из ${t} · ${pct}%`;
+  document.getElementById("qrMsg").textContent = msg;
+
+  const filled = pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 50 ? 1 : 0;
+  const starsWrap = document.getElementById("qrStars");
+  const stars = starsWrap.querySelectorAll(".star");
+  stars.forEach(s => s.classList.remove("on"));
+  void starsWrap.offsetWidth;
+  stars.forEach((s, i) => { if (i < filled) s.classList.add("on"); });
+
+  if (pct >= 70) {
+    setTimeout(() => sparkleBurst(document.getElementById("qrScore"), 10), 120);
+    catSay("Мур! Отличная работа. ✦", "happy");
+  } else {
+    catSay("Ничего, потренируемся ещё.");
+  }
+}
+
+document.getElementById("qRestart").addEventListener("click", resetQuiz);
+
+/* ==================== ФЛЕШ-КАРТОЧКИ ==================== */
+let flashState = { cards: [], i: 0 };
+
+function initFlash() {
+  const all = [];
+  Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push(it)));
+  flashState.cards = shuffle(all);
+  flashState.i = 0;
+  showFlash();
+}
+
+function showFlash() {
+  const c = flashState.cards[flashState.i];
+  const t = flashState.cards.length;
+  document.getElementById("fCount").textContent = `${flashState.i + 1} / ${t}`;
+  document.getElementById("fFill").style.width = `${((flashState.i + 1) / t) * 100}%`;
+  document.getElementById("fTerm").textContent = c.term;
+  document.getElementById("fHint").style.display = "block";
+  document.getElementById("fBack").style.display = "none";
+  document.getElementById("fRu").textContent = c.ru;
+  document.getElementById("fEx").textContent = c.ex;
+}
+
+document.getElementById("flashCard").addEventListener("click", () => {
+  document.getElementById("fHint").style.display = "none";
+  document.getElementById("fBack").style.display = "block";
+});
+
+document.getElementById("fNext").addEventListener("click", () => {
+  flashState.i = (flashState.i + 1) % flashState.cards.length;
+  showFlash();
+});
+document.getElementById("fPrev").addEventListener("click", () => {
+  flashState.i = (flashState.i - 1 + flashState.cards.length) % flashState.cards.length;
+  showFlash();
+});
+
+/* ==================== СОПОСТАВЛЕНИЕ ==================== */
+let matchState = { pairs: [], selected: null, matched: 0 };
+
+function initMatch() {
+  const all = [];
+  Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push({ term: it.term, ru: it.ru.split("—")[0].trim() })));
+  const picked = shuffle(all).slice(0, 5);
+  matchState.pairs = picked;
+  matchState.selected = null;
+  matchState.matched = 0;
+  renderMatch();
+}
+
+function renderMatch() {
+  const grid = document.getElementById("matchGrid");
+  const left = shuffle(matchState.pairs.map((p, i) => ({ text: p.term, id: i, side: "L" })));
+  const right = shuffle(matchState.pairs.map((p, i) => ({ text: p.ru, id: i, side: "R" })));
+  const all = [...left, ...right];
+  grid.innerHTML = all.map(it => `<button class="match-item" data-id="${it.id}" data-side="${it.side}">${it.text}</button>`).join("");
+  grid.querySelectorAll(".match-item").forEach(b => b.addEventListener("click", () => tapMatch(b)));
+
+  const t = matchState.pairs.length;
+  document.getElementById("mCount").textContent = `${matchState.matched} / ${t}`;
+  document.getElementById("mFill").style.width = `${(matchState.matched / t) * 100}%`;
+  document.getElementById("mFb").className = "fb";
+  document.getElementById("mFb").textContent = "";
+}
+
+function tapMatch(btn) {
+  if (btn.classList.contains("matched")) return;
+  if (!matchState.selected) {
+    matchState.selected = btn;
+    btn.classList.add("selected");
+    return;
+  }
+  if (matchState.selected === btn) {
+    btn.classList.remove("selected");
+    matchState.selected = null;
+    return;
+  }
+  const a = matchState.selected;
+  const b = btn;
+  if (a.dataset.side === b.dataset.side) {
+    a.classList.remove("selected");
+    matchState.selected = b;
+    b.classList.add("selected");
+    return;
+  }
+  if (a.dataset.id === b.dataset.id) {
+    a.classList.remove("selected");
+    a.classList.add("matched");
+    b.classList.add("matched");
+    matchState.matched++;
+    matchState.selected = null;
+    sparkleBurst(b, 5);
+    const t = matchState.pairs.length;
+    document.getElementById("mCount").textContent = `${matchState.matched} / ${t}`;
+    document.getElementById("mFill").style.width = `${(matchState.matched / t) * 100}%`;
+    if (matchState.matched === t) {
+      const fb = document.getElementById("mFb");
+      fb.className = "fb ok show";
+      fb.textContent = "Все пары найдены. Нажмите «Назад», чтобы сыграть ещё.";
+      sparkleBurst(document.getElementById("matchGrid"), 10);
+      catSay("Мур! Все пары на месте. ✦", "happy");
+    }
+  } else {
+    a.classList.add("wrong");
+    b.classList.add("wrong");
+    setTimeout(() => {
+      a.classList.remove("wrong", "selected");
+      b.classList.remove("wrong");
+    }, 400);
+    matchState.selected = null;
+  }
+}
+
+/* ==================== НАПИСАНИЕ ==================== */
+let spellState = { items: [], i: 0, checked: false };
+
+function initSpell() {
+  const all = [];
+  Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push({ term: it.term, ru: it.ru })));
+  spellState.items = shuffle(all).slice(0, 10);
+  spellState.i = 0;
+  showSpell();
+}
+
+function showSpell() {
+  const c = spellState.items[spellState.i];
+  const t = spellState.items.length;
+  spellState.checked = false;
+  document.getElementById("sCount").textContent = `${spellState.i + 1} / ${t}`;
+  document.getElementById("sFill").style.width = `${(spellState.i / t) * 100}%`;
+  document.getElementById("sRu").textContent = c.ru;
+  const inp = document.getElementById("sInput");
+  inp.value = "";
+  inp.className = "spell-input";
+  inp.disabled = false;
+  inp.focus();
+  document.getElementById("sFb").className = "fb";
+  document.getElementById("sCheck").textContent = "Проверить";
+}
+
+document.getElementById("sCheck").addEventListener("click", () => {
+  const inp = document.getElementById("sInput");
+  const fb = document.getElementById("sFb");
+  const c = spellState.items[spellState.i];
+
+  if (!spellState.checked) {
+    if (!inp.value.trim()) return;
+    const ok = inp.value.trim().toLowerCase() === c.term.toLowerCase();
+    inp.classList.add(ok ? "correct" : "wrong");
+    fb.className = "fb show " + (ok ? "ok" : "no");
+    fb.textContent = ok ? "Верно." : `Правильный ответ: «${c.term}»`;
+    if (ok) {
+      sparkleBurst(inp, 7);
+      catSay(PRAISE[Math.floor(Math.random() * PRAISE.length)], "happy");
+    } else {
+      catSay(CHEER[Math.floor(Math.random() * CHEER.length)]);
+    }
+    spellState.checked = true;
+    inp.disabled = true;
+    document.getElementById("sCheck").textContent =
+      spellState.i === spellState.items.length - 1 ? "Завершить" : "Далее →";
+  } else {
+    spellState.i++;
+    if (spellState.i >= spellState.items.length) {
+      document.getElementById("sRu").textContent = "Все слова пройдены. ✦";
+      document.getElementById("sInput").style.display = "none";
+      fb.className = "fb ok show";
+      fb.textContent = "Нажмите «Назад» и начните заново.";
+      document.getElementById("sCheck").style.display = "none";
+      return;
+    }
+    showSpell();
+  }
+});
+
+document.getElementById("sInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("sCheck").click();
+});
+
+const origInitSpell = initSpell;
+initSpell = function() {
+  document.getElementById("sInput").style.display = "block";
+  document.getElementById("sCheck").style.display = "inline-block";
+  origInitSpell();
+};
+
+/* ==================== ИГРА ==================== */
+let gameState = { i: 0, score: 0, hp: 3, active: false, order: [] };
+
+function resetGame() {
+  gameState = { i: 0, score: 0, hp: 3, active: false, order: shuffle([...GAME_SCENARIOS]) };
+  document.getElementById("gScore").textContent = "0";
+  document.getElementById("gHp").textContent = "3";
+  document.getElementById("gScenario").textContent = "Нажмите «Старт», чтобы начать";
+  document.getElementById("gOpts").innerHTML = "";
+  document.getElementById("gStart").textContent = "Старт";
+}
+
+document.getElementById("gStart").addEventListener("click", () => {
+  if (gameState.hp <= 0 || gameState.i >= gameState.order.length) {
+    resetGame();
+  }
+  if (!gameState.active) {
+    gameState.active = true;
+    gameState.i = 0;
+    gameState.score = 0;
+    gameState.hp = 3;
+    document.getElementById("gScore").textContent = "0";
+    document.getElementById("gHp").textContent = "3";
+    showGame();
+  }
+});
+
+function showGame() {
+  if (gameState.i >= gameState.order.length) {
+    document.getElementById("gScenario").textContent = "Все испытания пройдены. ✦";
+    document.getElementById("gOpts").innerHTML = "";
+    document.getElementById("gStart").textContent = "Ещё раз";
+    gameState.active = false;
+    catSay("Система под защитой. Мур! 🐾", "happy");
+    return;
+  }
+  const s = gameState.order[gameState.i];
+  document.getElementById("gScenario").textContent = s.s;
+  const optsEl = document.getElementById("gOpts");
+  optsEl.innerHTML = s.o.map((t, i) => `<button class="opt" data-i="${i}">${t}</button>`).join("");
+  optsEl.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => answerGame(parseInt(b.dataset.i))));
+}
+
+function answerGame(idx) {
+  const s = gameState.order[gameState.i];
+  const opts = document.querySelectorAll("#gOpts .opt");
+  opts.forEach((b, i) => {
+    b.classList.add("disabled");
+    if (i === s.c) b.classList.add("correct");
+    if (i === idx && i !== s.c) b.classList.add("wrong");
+  });
+  if (idx === s.c) {
+    gameState.score += 10;
+    sparkleBurst(opts[s.c], 6);
+  } else {
+    gameState.hp -= 1;
+  }
+  document.getElementById("gScore").textContent = gameState.score;
+  document.getElementById("gHp").textContent = Math.max(0, gameState.hp);
+
+  setTimeout(() => {
+    if (gameState.hp <= 0) {
+      document.getElementById("gScenario").textContent = "Система взломана. Попробуйте ещё раз.";
+      document.getElementById("gOpts").innerHTML = "";
+      document.getElementById("gStart").textContent = "Заново";
+      gameState.active = false;
+      catSay("Не переживай, попробуем снова.");
+      return;
+    }
+    gameState.i++;
+    showGame();
+  }, 800);
+}
+
+setTimeout(newPhrase, 6000);
+</script>
+</body>
+</html>

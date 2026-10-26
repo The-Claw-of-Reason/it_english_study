@@ -246,8 +246,8 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
 }
 .brand {
   display: flex; align-items: center; gap: 11px;
-  font-weight: 800;              /* было 700 — жирнее */
-  font-size: 22px;               /* было 16px — крупнее */
+  font-weight: 800;              /* было 700 - жирнее */
+  font-size: 22px;               /* было 16px - крупнее */
   letter-spacing: -.02em;
   color: var(--text);
 }
@@ -264,7 +264,7 @@ body.light .topbar { background: rgba(244, 240, 251, .85); }
   /* опционально: мягкое свечение вокруг надписи */
   filter: drop-shadow(0 0 10px var(--accent-glow));
 }
-/* Кнопка темы — картинка с котиками, без инверсии */
+/* Кнопка темы - картинка с котиками, без инверсии */
 .theme-toggle {
   width: 54px;
   height: 54px;
@@ -401,7 +401,7 @@ main {
 .card.flipped .front { display: none; }
 .card.flipped .back { display: block; }
 
-/* ============ ПРАКТИКА — обновлённый дизайн ============ */
+/* ============ ПРАКТИКА - обновлённый дизайн ============ */
 #studyHub { position: relative; }
 
 .practice-header {
@@ -1052,7 +1052,7 @@ body.light .paw-mark { opacity: .04; }
 
     <section class="view" id="view-abbr">
       <h2 class="view-title">Abbreviations</h2>
-      <p class="view-sub">CVE, SOC, SIEM — расшифровка</p>
+      <p class="view-sub">CVE, SOC, SIEM - расшифровка</p>
       <input type="text" class="search" data-search="abbr" placeholder="Search" />
       <div class="cards" id="cards-abbr"></div>
     </section>
@@ -1131,7 +1131,7 @@ body.light .paw-mark { opacity: .04; }
             <div class="progress-track"><div class="progress-fill" id="qFill"></div></div>
             <span id="qCount">0/0</span>
           </div>
-          <div class="q-text" id="qText">—</div>
+          <div class="q-text" id="qText">-</div>
           <div class="opts" id="qOpts"></div>
           <div class="fb" id="qFb"></div>
           <button class="btn btn-full" id="qNext" style="margin-top:14px; display:none">Далее</button>
@@ -1159,7 +1159,7 @@ body.light .paw-mark { opacity: .04; }
         </div>
         <div class="flash-wrap">
           <div class="flash-card" id="flashCard">
-            <div class="flash-term" id="fTerm">—</div>
+            <div class="flash-term" id="fTerm">-</div>
             <div class="flash-hint" id="fHint">Click to see the translation</div>
             <div id="fBack" style="display:none; width:100%">
               <div class="flash-ru" id="fRu"></div>
@@ -1181,7 +1181,7 @@ body.light .paw-mark { opacity: .04; }
           <span id="mCount">0/0</span>
         </div>
         <div style="text-align:center; font-size:13px; color:var(--text-dim); margin-bottom:14px">
-          Найдите пару: термин — перевод
+          Найдите пару: термин - перевод
         </div>
         <div class="match-grid" id="matchGrid"></div>
         <div class="fb" id="mFb" style="margin-top:14px"></div>
@@ -1198,7 +1198,7 @@ body.light .paw-mark { opacity: .04; }
           <div style="text-align:center; font-size:13px; color:var(--text-dim); margin-bottom:12px">
             Напишите термин по-английски
           </div>
-          <div class="spell-ru" id="sRu">—</div>
+          <div class="spell-ru" id="sRu">-</div>
           <input type="text" class="spell-input" id="sInput" placeholder="type in English..." autocomplete="off" autocapitalize="off" spellcheck="false" />
           <button class="btn btn-full" id="sCheck">Проверить</button>
           <div class="fb" id="sFb"></div>
@@ -1234,7 +1234,7 @@ body.light .paw-mark { opacity: .04; }
     </button>
     <button class="tab" data-view="abbr">
       <svg class="icon"><use href="#i-text"/></svg>
-      <span class="tab-label">ABBR ?</span>
+      <span class="tab-label">ABBR</span>
     </button>
     <button class="tab" data-view="slang">
       <svg class="icon"><use href="#i-chat"/></svg>
@@ -1242,7 +1242,7 @@ body.light .paw-mark { opacity: .04; }
     </button>
     <button class="tab" data-view="study">
       <svg class="icon"><use href="#i-book"/></svg>
-      <span class="tab-label">PRAC</span>
+      <span class="tab-label">PRACTIC</span>
     </button>
   </nav>
 
@@ -1252,50 +1252,50 @@ body.light .paw-mark { opacity: .04; }
 /* ==================== ДАННЫЕ ==================== */
 const DATA = {
   ib: [
-    { term: "Vulnerability", ru: "Уязвимость — слабое место в системе.", ex: "The patch fixes a critical vulnerability." },
-    { term: "Exploit", ru: "Эксплойт — код, использующий уязвимость.", ex: "Hackers used a zero-day exploit." },
+    { term: "Vulnerability", ru: "Уязвимость - слабое место в системе.", ex: "The patch fixes a critical vulnerability." },
+    { term: "Exploit", ru: "Эксплойт - код, использующий уязвимость.", ex: "Hackers used a zero-day exploit." },
     { term: "Breach", ru: "Утечка / взлом данных.", ex: "A data breach affected 2M users." },
-    { term: "Patch", ru: "Патч — обновление, закрывающее уязвимость.", ex: "Install the latest patch." },
-    { term: "Threat actor", ru: "Угрожающая сторона — хакер или группа.", ex: "The threat actor is linked to APT." },
-    { term: "Firewall", ru: "Файрвол — фильтр трафика.", ex: "Configure the firewall to block traffic." },
+    { term: "Patch", ru: "Патч - обновление, закрывающее уязвимость.", ex: "Install the latest patch." },
+    { term: "Threat actor", ru: "Угрожающая сторона - хакер или группа.", ex: "The threat actor is linked to APT." },
+    { term: "Firewall", ru: "Файрвол - фильтр трафика.", ex: "Configure the firewall to block traffic." },
     { term: "Encryption", ru: "Шифрование данных.", ex: "Use AES encryption at rest." },
     { term: "Malware", ru: "Вредоносное ПО.", ex: "The malware spread via phishing." },
-    { term: "Phishing", ru: "Фишинг — обман для кражи данных.", ex: "He clicked a phishing link." },
+    { term: "Phishing", ru: "Фишинг - обман для кражи данных.", ex: "He clicked a phishing link." },
     { term: "Ransomware", ru: "Шифровальщик с требованием выкупа.", ex: "Ransomware locked all files." },
-    { term: "Penetration test", ru: "Пентест — проверка защиты на прочность.", ex: "We hired a firm for a pentest." },
+    { term: "Penetration test", ru: "Пентест - проверка защиты на прочность.", ex: "We hired a firm for a pentest." },
     { term: "Zero-day", ru: "Уязвимость без патча.", ex: "The zero-day was sold on the dark web." },
-    { term: "Backdoor", ru: "Бэкдор — скрытый доступ.", ex: "Attackers left a backdoor." },
-    { term: "Sandbox", ru: "Песочница — изолированная среда.", ex: "Run the file in a sandbox." },
-    { term: "Log", ru: "Лог — запись событий системы.", ex: "Check the logs for activity." },
-    { term: "Brute force", ru: "Брутфорс — перебор паролей.", ex: "Brute force attack on SSH." },
+    { term: "Backdoor", ru: "Бэкдор - скрытый доступ.", ex: "Attackers left a backdoor." },
+    { term: "Sandbox", ru: "Песочница - изолированная среда.", ex: "Run the file in a sandbox." },
+    { term: "Log", ru: "Лог - запись событий системы.", ex: "Check the logs for activity." },
+    { term: "Brute force", ru: "Брутфорс - перебор паролей.", ex: "Brute force attack on SSH." },
     { term: "Payload", ru: "Полезная нагрузка вредоноса.", ex: "The payload downloaded a trojan." },
-    { term: "Rootkit", ru: "Руткит — скрытый вредонос.", ex: "The rootkit hid from antivirus." }
+    { term: "Rootkit", ru: "Руткит - скрытый вредонос.", ex: "The rootkit hid from antivirus." }
   ],
   it: [
-    { term: "Deploy", ru: "Развернуть — выкатить код на сервер.", ex: "We deploy to production on Fridays." },
+    { term: "Deploy", ru: "Развернуть - выкатить код на сервер.", ex: "We deploy to production on Fridays." },
     { term: "Rollback", ru: "Откат к предыдущей версии.", ex: "The update broke things, do a rollback." },
     { term: "Hotfix", ru: "Срочное исправление.", ex: "They released a hotfix in an hour." },
-    { term: "Bug", ru: "Баг — ошибка в коде.", ex: "It's not a bug, it's a feature!" },
+    { term: "Bug", ru: "Баг - ошибка в коде.", ex: "It's not a bug, it's a feature!" },
     { term: "Merge", ru: "Слияние веток кода.", ex: "Merge the feature branch into main." },
-    { term: "Commit", ru: "Коммит — сохранение изменений.", ex: "Commit your changes before switching." },
-    { term: "Repository", ru: "Репозиторий — хранилище кода.", ex: "Clone the repository first." },
+    { term: "Commit", ru: "Коммит - сохранение изменений.", ex: "Commit your changes before switching." },
+    { term: "Repository", ru: "Репозиторий - хранилище кода.", ex: "Clone the repository first." },
     { term: "Branch", ru: "Ветка в git.", ex: "Create a new branch for the fix." },
-    { term: "Fork", ru: "Форк — копия чужого репозитория.", ex: "Fork the repo and open a PR." },
-    { term: "Pull request", ru: "PR — запрос на слияние кода.", ex: "I opened a pull request." },
+    { term: "Fork", ru: "Форк - копия чужого репозитория.", ex: "Fork the repo and open a PR." },
+    { term: "Pull request", ru: "PR - запрос на слияние кода.", ex: "I opened a pull request." },
     { term: "Legacy code", ru: "Наследственный код.", ex: "Nobody wants to touch legacy code." },
-    { term: "Refactor", ru: "Рефакторинг — улучшение кода.", ex: "We need to refactor this module." },
-    { term: "Code review", ru: "Ревью кода — проверка коллегами.", ex: "Waiting for code review." },
+    { term: "Refactor", ru: "Рефакторинг - улучшение кода.", ex: "We need to refactor this module." },
+    { term: "Code review", ru: "Ревью кода - проверка коллегами.", ex: "Waiting for code review." },
     { term: "Tech debt", ru: "Технический долг.", ex: "We'll pay off tech debt next sprint." },
-    { term: "Sprint", ru: "Спринт — короткий цикл работы.", ex: "This sprint we ship the new API." },
+    { term: "Sprint", ru: "Спринт - короткий цикл работы.", ex: "This sprint we ship the new API." },
     { term: "Standup", ru: "Планёрка стоя.", ex: "Daily standup at 10 AM." },
-    { term: "Release", ru: "Релиз — публикация версии.", ex: "The release is scheduled for Monday." }
+    { term: "Release", ru: "Релиз - публикация версии.", ex: "The release is scheduled for Monday." }
   ],
   abbr: [
-    { term: "CVE", ru: "Common Vulnerabilities and Exposures — ID уязвимости.", ex: "CVE-2024-1234 is critical." },
-    { term: "SOC", ru: "Security Operations Center — центр мониторинга.", ex: "The SOC detected the intrusion." },
+    { term: "CVE", ru: "Common Vulnerabilities and Exposures - ID уязвимости.", ex: "CVE-2024-1234 is critical." },
+    { term: "SOC", ru: "Security Operations Center - центр мониторинга.", ex: "The SOC detected the intrusion." },
     { term: "SIEM", ru: "Security Information and Event Management.", ex: "SIEM flagged unusual logins." },
     { term: "IDS / IPS", ru: "Intrusion Detection / Prevention System.", ex: "The IPS blocked the packet." },
-    { term: "MITM", ru: "Man-in-the-Middle — атака посередине.", ex: "Use HTTPS to prevent MITM." },
+    { term: "MITM", ru: "Man-in-the-Middle - атака посередине.", ex: "Use HTTPS to prevent MITM." },
     { term: "XSS", ru: "Cross-Site Scripting.", ex: "Sanitize input to avoid XSS." },
     { term: "SQLi", ru: "SQL Injection.", ex: "The form was vulnerable to SQLi." },
     { term: "RBAC", ru: "Role-Based Access Control.", ex: "We use RBAC for admin rights." },
@@ -1313,8 +1313,8 @@ const DATA = {
     { term: "SQL", ru: "Structured Query Language.", ex: "Write a SQL query to join tables." }
   ],
   slang: [
-    { term: "LGTM", ru: "Looks Good To Me — «норм» в ревью.", ex: "LGTM, merge it!" },
-    { term: "WIP", ru: "Work In Progress — в работе.", ex: "This PR is still WIP." },
+    { term: "LGTM", ru: "Looks Good To Me - «норм» в ревью.", ex: "LGTM, merge it!" },
+    { term: "WIP", ru: "Work In Progress - в работе.", ex: "This PR is still WIP." },
     { term: "Script kiddie", ru: "Новичок без понимания.", ex: "He's just a script kiddie." },
     { term: "Red team", ru: "Атакующие в учениях.", ex: "Red team breached the perimeter." },
     { term: "Blue team", ru: "Защитники.", ex: "Blue team stopped the attack." },
@@ -1323,7 +1323,7 @@ const DATA = {
     { term: "Dogfooding", ru: "Использование своего продукта.", ex: "We're dogfooding the new auth." },
     { term: "Rubber duck debugging", ru: "Объяснение кода уточке.", ex: "I rubber ducked it and found the bug." },
     { term: "Bikeshedding", ru: "Спор о мелочах.", ex: "Stop bikeshedding, focus!" },
-    { term: "Firefighting", ru: "Тушение пожаров — срочные проблемы.", ex: "All day firefighting prod issues." },
+    { term: "Firefighting", ru: "Тушение пожаров - срочные проблемы.", ex: "All day firefighting prod issues." },
     { term: "On-call", ru: "Дежурство по инцидентам.", ex: "I'm on-call this week." },
     { term: "Postmortem", ru: "Разбор инцидента.", ex: "Write a postmortem for the outage." },
     { term: "Blast radius", ru: "Масштаб последствий.", ex: "We limited the blast radius." },
@@ -1381,9 +1381,9 @@ const GAME_SCENARIOS = [
 const CAT_PHRASES = [
   "Готов к практике?",
   "Ты справишься. ✦",
-  "Ещё немного — и заговоришь как сеньор.",
-  "Безопасность — это процесс, а не продукт.",
-  "Повторение — лучший способ запомнить.",
+  "Ещё немного - и заговоришь как сеньор.",
+  "Безопасность - это процесс, а не продукт.",
+  "Повторение - лучший способ запомнить.",
   "Маленькими шагами к большому результату.",
   "Не спеши: точность важнее скорости.",
   "Сегодня хороший день для нового слова.",
@@ -1391,7 +1391,7 @@ const CAT_PHRASES = [
 ];
 
 const PRAISE = [
-  "Мур! Верно.",
+  "Верно.",
   "Отлично, так держать.",
   "Точно в цель! ✦",
   "Умница. Ещё одно слово в копилку.",
@@ -1401,12 +1401,12 @@ const PRAISE = [
 const CHEER = [
   "Ничего, попробуем ещё.",
   "Почти! Загляни в карточки.",
-  "Мур, не сдавайся.",
-  "Ошибка — тоже путь к знанию.",
+  "Не сдавайся.",
+  "Ошибка - тоже путь к знанию.",
   "Спокойно, всё получится."
 ];
 
-/* ==================== ФОН: КОТИКИ, ЛАПКИ, 0/1 ==================== */
+
 (function makeMagicCats() {
   const layer = document.getElementById("magicCats");
   if (!layer) return;
@@ -1522,7 +1522,6 @@ themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
 
-  // каждый клик переворачивает картинку на 180° (туда-обратно)
   flipped = !flipped;
   themeToggle.classList.toggle("flip", flipped);
 });
@@ -1718,7 +1717,7 @@ function showQResult() {
 
   if (pct >= 70) {
     setTimeout(() => sparkleBurst(document.getElementById("qrScore"), 10), 120);
-    catSay("Мур! Отличная работа. ✦", "happy");
+    catSay("Отличная работа. ✦", "happy");
   } else {
     catSay("Ничего, потренируемся ещё.");
   }
@@ -1768,7 +1767,7 @@ let matchState = { pairs: [], selected: null, matched: 0 };
 
 function initMatch() {
   const all = [];
-  Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push({ term: it.term, ru: it.ru.split("—")[0].trim() })));
+  Object.keys(DATA).forEach(cat => DATA[cat].forEach(it => all.push({ term: it.term, ru: it.ru.split("-")[0].trim() })));
   const picked = shuffle(all).slice(0, 5);
   matchState.pairs = picked;
   matchState.selected = null;
@@ -1936,11 +1935,11 @@ document.getElementById("gStart").addEventListener("click", () => {
 
 function showGame() {
   if (gameState.i >= gameState.order.length) {
-    document.getElementById("gScenario").textContent = "Все испытания пройдены. ✦";
+    document.getElementById("gScenario").textContent = "Все испытания пройдены.✦";
     document.getElementById("gOpts").innerHTML = "";
     document.getElementById("gStart").textContent = "Ещё раз";
     gameState.active = false;
-    catSay("Система под защитой. Мур! 🐾", "happy");
+    catSay("Система под защитой.", "happy");
     return;
   }
   const s = gameState.order[gameState.i];
